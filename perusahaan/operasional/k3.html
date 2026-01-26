@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mine For All - Pelaporan K3 &amp; Keselamatan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .fill-icon { font-variation-settings: 'FILL' 1; }
+        .active-nav { @apply bg-primary/10 text-primary border-r-4 border-primary; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white min-h-screen flex">
+<aside class="w-72 border-r border-[#dbe0e6] dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col sticky top-0 h-screen flex-shrink-0">
+<div class="p-6 border-b border-[#dbe0e6] dark:border-slate-800">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-10 overflow-hidden rounded-lg">
+<img alt="Mine For All" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIC1S4-FZHMiDlhMG8fSr-juwrmk8mKTCN1I6IeVDsFklpihYpX7dOLiWX3UwP8u73CHOmW8IOCSM74Kw__GZfstbNeSBKxp4pz-gFF9x4LqVCPvwEG5gAaAThM9gKArtrj7Rl2XNb1jzzG6jYS42a42BKBFD8EiuxT4k49DICTcipM54Dsdv5zXVC2pUDNVhsrtdEg3P_eqvHsMbxg6DJ_Hoty87nbDSZG6RgxOXqTVy8IYWmXOeKrDOoofKs3-DQtVY0CpUHmmQ"/>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Mine For All</h2>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-slate-800 cursor-pointer transition-colors" href="../dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">engineering</span>
+<p class="text-sm font-medium">Tahap Pra-Tambang</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">architecture</span>
+<p class="text-sm font-medium">Perencanaan</p>
+</div>
+<div class="py-2">
+<div class="flex items-center gap-3 px-3 py-2 text-primary font-bold">
+<span class="material-symbols-outlined fill-icon">settings_applications</span>
+<p class="text-sm">Operasional</p>
+</div>
+<div class="ml-9 mt-1 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-slate-800 cursor-pointer">
+<p class="text-sm font-medium">Produksi</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-slate-800 cursor-pointer">
+<p class="text-sm font-medium">Fleet</p>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg active-nav cursor-pointer">
+<p class="text-sm font-bold">K3 &amp; Pelaporan Insiden</p>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">gavel</span>
+<p class="text-sm font-medium">Kepatuhan</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">nature_people</span>
+<p class="text-sm font-medium">Pasca-Tambang</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">description</span>
+<p class="text-sm font-medium">Arsip Dokumen</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#617589] hover:bg-[#f0f2f4] dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Pengaturan</p>
+</div>
+</div>
+<div class="p-4 border-t border-[#dbe0e6] dark:border-slate-800">
+<div class="flex items-center gap-3 px-2 py-3 bg-[#f0f2f4] dark:bg-slate-800 rounded-xl">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined fill-icon">account_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">John Doe</p>
+<p class="text-xs text-[#617589] truncate">Petugas K3</p>
+</div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto">
+<div class="p-6 lg:px-10 flex items-center justify-between border-b border-[#dbe0e6] dark:border-slate-800 bg-white dark:bg-slate-900 sticky top-0 z-10">
+<div>
+<h1 class="text-2xl font-bold text-[#111418] dark:text-white">Portal Perusahaan - Pelaporan K3 &amp; Insiden</h1>
+<p class="text-sm text-[#617589]">Pemantauan kinerja keselamatan dan insiden secara real-time</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<input class="form-input w-64 rounded-lg border-[#dbe0e6] dark:border-slate-700 bg-[#f0f2f4] dark:bg-slate-800 focus:ring-primary pl-10 h-10 text-sm" placeholder="Cari catatan keselamatan..."/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-sm">search</span>
+</div>
+<button class="relative p-2 bg-[#f0f2f4] dark:bg-slate-800 rounded-lg text-slate-600 dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-600 rounded-full border-2 border-white dark:border-slate-800"></span>
+</button>
+</div>
+</div>
+<div class="p-6 lg:px-10">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-[#dbe0e6] dark:border-slate-800">
+<p class="text-[#617589] text-sm font-medium">Cidera Waktu Hilang (LTI)</p>
+<div class="flex items-baseline justify-between">
+<p class="text-[#dc2626] tracking-light text-3xl font-bold">2</p>
+<span class="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-bold rounded">-10% vs MG</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-[#dbe0e6] dark:border-slate-800">
+<p class="text-[#617589] text-sm font-medium">Kejadian Hampir Celaka</p>
+<div class="flex items-baseline justify-between">
+<p class="text-[#f59e0b] tracking-light text-3xl font-bold">14</p>
+<span class="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-bold rounded">+5% tren</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-[#dbe0e6] dark:border-slate-800">
+<p class="text-[#617589] text-sm font-medium">Tingkat Frekuensi (FR)</p>
+<div class="flex items-baseline justify-between">
+<p class="text-[#111418] dark:text-white tracking-light text-3xl font-bold">4.2</p>
+<span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded">-2.1%</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-[#dbe0e6] dark:border-slate-800">
+<p class="text-[#617589] text-sm font-medium">Tingkat Keparahan (SR)</p>
+<div class="flex items-baseline justify-between">
+<p class="text-[#111418] dark:text-white tracking-light text-3xl font-bold">12.5</p>
+<span class="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-bold rounded">+8% peringatan</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<div class="xl:col-span-2 space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-[#dbe0e6] dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-[#dbe0e6] dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50">
+<h2 class="text-[#111418] dark:text-white text-lg font-bold">Laporan Insiden Digital</h2>
+</div>
+<div class="px-6 pt-6">
+<label class="block text-sm font-semibold text-[#111418] dark:text-white mb-3">Kategori Insiden</label>
+<div class="flex h-11 items-center justify-center rounded-lg bg-[#f0f2f4] dark:bg-slate-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111418] dark:has-[:checked]:text-white text-[#617589] text-sm font-bold transition-all">
+<span class="truncate">Cidera Personel</span>
+<input checked="" class="hidden" name="incident-type" type="radio" value="injury"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111418] dark:has-[:checked]:text-white text-[#617589] text-sm font-bold transition-all">
+<span class="truncate">Kerusakan Properti</span>
+<input class="hidden" name="incident-type" type="radio" value="property"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111418] dark:has-[:checked]:text-white text-[#617589] text-sm font-bold transition-all">
+<span class="truncate">Hampir Celaka</span>
+<input class="hidden" name="incident-type" type="radio" value="miss"/>
+</label>
+</div>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium mb-1">Judul Insiden</label>
+<input class="w-full rounded-lg border-[#dbe0e6] dark:border-slate-700 bg-white dark:bg-slate-800 px-4 h-10 focus:ring-primary focus:border-primary" placeholder="Judul deskriptif singkat" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">Lokasi Situs</label>
+<div class="relative">
+<input class="w-full rounded-lg border-[#dbe0e6] dark:border-slate-700 bg-white dark:bg-slate-800 px-10 h-10 focus:ring-primary focus:border-primary" placeholder="Masukkan nama pit atau bagian" type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-xl">location_on</span>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">Waktu Kejadian</label>
+<input class="w-full rounded-lg border-[#dbe0e6] dark:border-slate-700 bg-white dark:bg-slate-800 px-4 h-10 focus:ring-primary focus:border-primary" type="datetime-local"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">Deskripsi Kejadian</label>
+<textarea class="w-full rounded-lg border-[#dbe0e6] dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 focus:ring-primary focus:border-primary h-[148px]" placeholder="Deskripsi rinci tentang apa yang terjadi..."></textarea>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-semibold mb-3">Unggah Bukti</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-square rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center gap-2 text-slate-400 hover:border-primary hover:text-primary cursor-pointer transition-all group">
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">add_a_photo</span>
+<span class="text-xs font-bold uppercase">Tambah Foto</span>
+</div>
+<div class="relative aspect-square rounded-lg bg-center bg-cover border border-[#dbe0e6] dark:border-slate-800" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXK0fHzfWY1GFyaMGfCUwBqi5oe9Jxl8jc8NP_aGahtwGjVJ6F9Yzy7WGRh-YuLtXqOmWMckTmhPYaAwxpkpuF9UXnV8h8DDxoYwARZGlvSxOKOmXHDFUwlsj89aHa59m-ei8btwh5SLh2uDa1jfGyMMJLnWbAJK1ylHylVNa2Z1lG9NJbXt0VTO9jSUBgqjlmu16T4kI7sPU6veYpQVgccu3z-p0mQPekkU4G_uet4iH1Qp3C7etQZTT9bla5_at4Fu3UDuSFUKs");'>
+<button class="absolute top-1 right-1 bg-black/50 text-white rounded-full p-1 leading-none hover:bg-black/70"><span class="material-symbols-outlined text-sm">close</span></button>
+</div>
+<div class="relative aspect-square rounded-lg bg-center bg-cover border border-[#dbe0e6] dark:border-slate-800" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDHOoPAmeM_3CDOXlVbV3C4jPQ815eYRk6BUl0Qdc8LvNivfJoshZMEMBZEsSt9PxfeFghqhrahdigrCz2DxQAGYRyxTe3iFB93Zrw4NxeO8Dm_o8uycHRRRoDATrXRkY0wtcgv_FKmvdBejOwNHsRUG80JsLdXZmmH_rYPI4JLFje8o31IOUdEhfkyQT2OsEEutSX554GQdWdidDISF-zjy1EXCPZ-1tIDJNSFaZfKfMzmEL912POFQ_GdSAqXeLrljD29RDOBxtY");'>
+<button class="absolute top-1 right-1 bg-black/50 text-white rounded-full p-1 leading-none hover:bg-black/70"><span class="material-symbols-outlined text-sm">close</span></button>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center border border-[#dbe0e6] dark:border-slate-700">
+<p class="text-xs text-slate-500 font-medium font-bold">+2 file lainnya</p>
+</div>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 flex justify-end gap-3 border-t border-[#dbe0e6] dark:border-slate-800">
+<button class="px-6 py-2 rounded-lg text-sm font-bold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Simpan Draf</button>
+<button class="px-6 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90 shadow-sm transition-all">Kirim Laporan Akhir</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-[#dbe0e6] dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-[#dbe0e6] dark:border-slate-800 flex justify-between items-center">
+<h2 class="text-[#111418] dark:text-white text-base font-bold">Status Insiden Terbaru</h2>
+<button class="text-xs font-bold text-primary hover:underline">Lihat Semua</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-[#617589] text-xs font-bold uppercase">
+<tr>
+<th class="px-6 py-3">ID Insiden</th>
+<th class="px-6 py-3">Tipe</th>
+<th class="px-6 py-3">Tanggal</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3 text-right">Tindakan</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-bold">#INC-4492</td>
+<td class="px-6 py-4"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500"></span>LTI</span></td>
+<td class="px-6 py-4">24 Okt 2023</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-bold rounded">Dalam Investigasi</span></td>
+<td class="px-6 py-4 text-right"><button class="text-primary hover:underline font-bold">Lihat</button></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-bold">#INC-4491</td>
+<td class="px-6 py-4"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-500"></span>Hampir Celaka</span></td>
+<td class="px-6 py-4">23 Okt 2023</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded">Selesai</span></td>
+<td class="px-6 py-4 text-right"><button class="text-primary hover:underline font-bold">Lihat</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-[#dbe0e6] dark:border-slate-800 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-base font-bold">Jadwal Keselamatan</h2>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded text-slate-500 transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded text-slate-500 transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="text-center mb-4">
+<span class="text-sm font-bold text-primary uppercase tracking-wider">November 2023</span>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-xs font-bold text-slate-400 mb-2">
+<span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span><span>M</span>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center">
+<div class="p-2 text-sm text-slate-400">30</div>
+<div class="p-2 text-sm text-slate-400">31</div>
+<div class="p-2 text-sm bg-primary text-white rounded-lg font-bold">1</div>
+<div class="p-2 text-sm relative">2 <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-amber-500 rounded-full"></span></div>
+<div class="p-2 text-sm relative">3 <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full"></span></div>
+<div class="p-2 text-sm">4</div>
+<div class="p-2 text-sm">5</div>
+<div class="p-2 text-sm">6</div>
+<div class="p-2 text-sm bg-slate-100 dark:bg-slate-800 rounded-lg font-bold">7</div>
+<div class="p-2 text-sm">8</div>
+<div class="p-2 text-sm">9</div>
+<div class="p-2 text-sm">10</div>
+<div class="p-2 text-sm">11</div>
+<div class="p-2 text-sm">12</div>
+</div>
+<div class="mt-8 space-y-4">
+<h3 class="text-xs font-bold uppercase text-slate-500 tracking-wider">Acara Mendatang</h3>
+<div class="flex gap-3 items-start group cursor-pointer p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="w-1 bg-amber-500 h-10 rounded-full"></div>
+<div class="flex-1">
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Penyegaran K3 Bawah Tanah</p>
+<p class="text-xs text-slate-500">2 Nov · 09:00 · Aula A</p>
+</div>
+</div>
+<div class="flex gap-3 items-start group cursor-pointer p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="w-1 bg-red-600 h-10 rounded-full"></div>
+<div class="flex-1">
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Latihan Kebakaran Terjadwal</p>
+<p class="text-xs text-slate-500">3 Nov · 14:00 · Zona 4</p>
+</div>
+</div>
+<div class="flex gap-3 items-start group cursor-pointer p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="w-1 bg-primary h-10 rounded-full"></div>
+<div class="flex-1">
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Pengecekan Pemeliharaan Alat</p>
+<p class="text-xs text-slate-500">7 Nov · Sepanjang Hari · Fleet 1</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-red-50 dark:bg-red-900/10 rounded-xl border border-red-200 dark:border-red-900/30 p-6">
+<div class="flex items-center gap-3 text-red-600 dark:text-red-400 mb-4">
+<span class="material-symbols-outlined fill-icon">warning</span>
+<h2 class="text-base font-bold">Indikator Kritis</h2>
+</div>
+<ul class="space-y-3">
+<li class="flex items-center justify-between text-sm">
+<span class="text-slate-700 dark:text-slate-300">Pelanggaran SR</span>
+<span class="font-bold text-red-600">+8.4%</span>
+</li>
+<li class="flex items-center justify-between text-sm">
+<span class="text-slate-700 dark:text-slate-300">Audit Terbuka</span>
+<span class="font-bold text-red-600">3 Terlambat</span>
+</li>
+</ul>
+<button class="w-full mt-4 py-2 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-all shadow-sm">Log Detail Audit</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

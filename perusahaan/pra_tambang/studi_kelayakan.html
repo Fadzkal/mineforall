@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal Perusahaan - Studi Kelayakan Tambang</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-bar {
+            @apply bg-primary rounded-t-sm transition-all duration-500 hover:bg-primary/80;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white min-h-screen">
+<div class="flex min-h-screen overflow-hidden">
+<aside class="w-80 bg-white dark:bg-[#111418] border-r border-slate-200 dark:border-slate-800 flex flex-col sticky top-0 h-screen z-50">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-xl flex items-center justify-center overflow-hidden">
+<img alt="Mine For All Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi03V-L-iX8zLMDGMUuCTko54kMAxXTOZhKP8RHR9PfNh8x8fwPzmjaIFlaZ698ukVza3O2W2RI-4MC2Vbvs1vVYNYr11w3fwNK2x7tXQ8R2WWqrY3w0ocg3A04UgrU483B04RVzEATgLoEDdNsWFGCorne8Zrz6oDXM_LvoaNOhYCMkb6RkZ8fE0wbSVXxq-9XgiqqeS4sWZD6zwfzhSqRGgoxLFrpTGUwpLkNe7Z3BBo8yZhbXdtB4zl4hVEQWGGaQYN2zYyjfA"/>
+</div>
+<div class="flex flex-col">
+<h2 class="text-lg font-bold leading-tight tracking-tight dark:text-white">Mine For All</h2>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Portal Perusahaan</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="../dashboard.html">
+<span class="material-symbols-outlined text-slate-400">dashboard</span>
+<span class="text-sm font-semibold">1. Dashboard</span>
+</a>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-md shadow-primary/20" href="#">
+<span class="material-symbols-outlined">landscape</span>
+<span class="text-sm font-semibold flex-1">2. Tahap Pra-Tambang</span>
+<span class="material-symbols-outlined text-sm rotate-180 transition-transform">expand_more</span>
+</a>
+<div class="ml-10 py-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="size-1.5 rounded-full bg-slate-300"></span>
+                        Eksplorasi
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2 text-sm font-bold text-primary" href="#">
+<span class="size-1.5 rounded-full bg-primary"></span>
+                        Studi Kelayakan
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="size-1.5 rounded-full bg-slate-300"></span>
+                        Izin Lingkungan
+                    </a>
+</div>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">architecture</span>
+<span class="text-sm font-semibold">3. Perencanaan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">settings_applications</span>
+<span class="text-sm font-semibold">4. Operasional</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">gavel</span>
+<span class="text-sm font-semibold">5. Kepatuhan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">eco</span>
+<span class="text-sm font-semibold">6. Pasca-Tambang</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">folder_open</span>
+<span class="text-sm font-semibold">7. Arsip Dokumen</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+<div class="size-10 rounded-full border-2 border-white dark:border-slate-700 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCE6bxRXobVZNS4k9YvFvY5VxDIc-ult-DBQtSyO-bUUDfe4pCy-IUw3QMlJ_uiYX1hvfLV-tAe1m7sGC9ISgwfA7qGyDyT0USE6qw2LDIkZ9ftOMOtHxEkgWnrCbi3Ap9l4FxCIlMJIcaCUMXxksNRoX324OEiP1kcAjwmJYh673aDNjy7TnxD1tr4uuk0HXPBsyCTpGjFgl29j4K-RH9kdRbwB4V508jcpwm3ude2fN5_J9nZyQUou3mDTtCSxxGUyzmbVylQSrg");'></div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold truncate">Alex Thompson</p>
+<p class="text-[10px] text-slate-500 font-medium">Manajer Proyek</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">logout</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-screen overflow-y-auto bg-[#f8fafc] dark:bg-background-dark">
+<header class="bg-white dark:bg-[#111418] border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex items-center justify-between sticky top-0 z-40">
+<div>
+<h1 class="text-xl font-bold">Studi Kelayakan Tambang</h1>
+<div class="flex items-center gap-2 text-xs text-slate-500 mt-1">
+<span>2. Tahap Pra-Tambang</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="font-bold text-primary">Studi Kelayakan</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-[#f0f2f4] dark:bg-slate-800 text-[#111418] dark:text-white hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center gap-2 px-4 h-10 rounded-xl bg-primary text-white text-sm font-bold shadow-md hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-[20px]">add_task</span>
+<span>Update Progress</span>
+</button>
+</div>
+</header>
+<div class="p-8 space-y-8 max-w-7xl mx-auto w-full">
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-400">Status Verifikasi Dokumen Pemerintah (FS)</h2>
+<span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold uppercase italic">Sedang Ditinjau</span>
+</div>
+<div class="relative">
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all" style="width: 65%"></div>
+</div>
+<div class="flex justify-between mt-4">
+<div class="flex flex-col items-start gap-1">
+<span class="size-3 rounded-full bg-primary shadow-[0_0_0_4px_rgba(19,127,236,0.1)]"></span>
+<span class="text-[11px] font-bold">Dokumen Dikirim</span>
+<span class="text-[10px] text-slate-400">12 Feb 2024</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="size-3 rounded-full bg-primary"></span>
+<span class="text-[11px] font-bold">Review Teknis</span>
+<span class="text-[10px] text-slate-400">Aktif</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="size-3 rounded-full bg-slate-200 dark:bg-slate-700"></span>
+<span class="text-[11px] font-bold text-slate-400">Verifikasi Lapangan</span>
+<span class="text-[10px] text-slate-400">Estimasi Mar 2024</span>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="size-3 rounded-full bg-slate-200 dark:bg-slate-700"></span>
+<span class="text-[11px] font-bold text-slate-400">Persetujuan Akhir</span>
+<span class="text-[10px] text-slate-400">-</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
+<span class="material-symbols-outlined text-emerald-600">payments</span>
+</div>
+<span class="text-[10px] font-bold text-emerald-600 uppercase">92% Selesai</span>
+</div>
+<h3 class="text-sm font-bold text-slate-500 uppercase">Kelayakan Ekonomi</h3>
+<p class="text-2xl font-bold mt-1">Sangat Layak</p>
+<p class="text-xs text-slate-400 mt-2 italic">Update: 15 Feb 2024</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+<span class="material-symbols-outlined text-blue-600">engineering</span>
+</div>
+<span class="text-[10px] font-bold text-blue-600 uppercase">85% Selesai</span>
+</div>
+<h3 class="text-sm font-bold text-slate-500 uppercase">Kelayakan Teknis</h3>
+<p class="text-2xl font-bold mt-1">Lanjut Optimasi</p>
+<p class="text-xs text-slate-400 mt-2 italic">Metode Open Pit</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+<span class="material-symbols-outlined text-amber-600">eco</span>
+</div>
+<span class="text-[10px] font-bold text-amber-600 uppercase">70% Selesai</span>
+</div>
+<h3 class="text-sm font-bold text-slate-500 uppercase">Izin Lingkungan</h3>
+<p class="text-2xl font-bold mt-1">Proses AMDAL</p>
+<p class="text-xs text-slate-400 mt-2 italic">Konsultasi Publik</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-lg font-bold">Analisis Keuangan Proyek</h2>
+<p class="text-xs text-slate-500">Berdasarkan Proyeksi Umur Tambang 15 Tahun</p>
+</div>
+<div class="flex gap-4">
+<div class="text-right">
+<p class="text-[10px] font-bold text-slate-400 uppercase">NPV (10%)</p>
+<p class="text-lg font-bold text-primary">IDR 4.2T</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-slate-400 uppercase">IRR</p>
+<p class="text-lg font-bold text-emerald-600">28.4%</p>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="relative h-48 flex items-end justify-between gap-2 px-2 border-b border-slate-100 dark:border-slate-800">
+<div class="w-full flex flex-col items-center gap-2">
+<div class="chart-bar w-full h-[30%]"></div>
+<span class="text-[10px] font-bold">Th 1</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2">
+<div class="chart-bar w-full h-[45%]"></div>
+<span class="text-[10px] font-bold">Th 2</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2">
+<div class="chart-bar w-full h-[65%]"></div>
+<span class="text-[10px] font-bold">Th 3</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2">
+<div class="chart-bar w-full h-[85%]"></div>
+<span class="text-[10px] font-bold">Th 4</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2">
+<div class="chart-bar w-full h-[100%]"></div>
+<span class="text-[10px] font-bold">Th 5</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2">
+<div class="chart-bar w-full h-[95%]"></div>
+<span class="text-[10px] font-bold">Th 6</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2">
+<div class="chart-bar w-full h-[90%]"></div>
+<span class="text-[10px] font-bold">Th 7</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2">
+<div class="chart-bar w-full h-[80%]"></div>
+<span class="text-[10px] font-bold text-slate-400">...</span>
+</div>
+</div>
+<p class="text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest">Proyeksi Arus Kas Bersih (Tahunan)</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-bold">Proyeksi Cadangan Mineral</h2>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="text-[10px] font-medium">Terbukti</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-slate-300"></span>
+<span class="text-[10px] font-medium">Terkira</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="space-y-2">
+<div class="flex justify-between items-center text-xs">
+<span class="font-bold">Total Sumberdaya</span>
+<span class="text-slate-500">124.5 Juta Ton</span>
+</div>
+<div class="h-4 w-full bg-slate-100 dark:bg-slate-800 rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 45%"></div>
+<div class="h-full bg-slate-300 dark:bg-slate-600" style="width: 35%"></div>
+</div>
+<div class="flex justify-between text-[10px] text-slate-400">
+<span>Cadangan Terbukti: 56.0 Mt</span>
+<span>Cadangan Terkira: 43.5 Mt</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">cloud_upload</span>
+                            Unggah Dokumen FS
+                        </h3>
+<div class="space-y-3">
+<div class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-3xl text-slate-300 group-hover:text-primary mb-2">upload_file</span>
+<p class="text-xs font-bold">Klik untuk unggah atau seret file</p>
+<p class="text-[10px] text-slate-400 mt-1">PDF, XLSX (Max 50MB)</p>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Dokumen Terbaru</p>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 group">
+<span class="material-symbols-outlined text-red-500">picture_as_pdf</span>
+<div class="flex-1 min-w-0">
+<p class="text-[11px] font-bold truncate">Laporan_Teknis_Final_v2.pdf</p>
+<p class="text-[10px] text-slate-500">14.2 MB • 2 jam yang lalu</p>
+</div>
+<button class="material-symbols-outlined text-slate-400 hover:text-primary text-sm">download</button>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 group">
+<span class="material-symbols-outlined text-emerald-500">description</span>
+<div class="flex-1 min-w-0">
+<p class="text-[11px] font-bold truncate">Analisis_Ekonomi_Rev3.xlsx</p>
+<p class="text-[10px] text-slate-500">5.8 MB • Kemarin</p>
+</div>
+<button class="material-symbols-outlined text-slate-400 hover:text-primary text-sm">download</button>
+</div>
+<button class="w-full py-2 text-[11px] font-bold text-primary hover:bg-primary/5 rounded-lg transition-colors border border-transparent hover:border-primary/20">
+                                    Lihat Semua Dokumen
+                                </button>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 dark:bg-primary/10 rounded-2xl p-6 border border-primary/10">
+<div class="flex items-center gap-2 text-primary mb-3">
+<span class="material-symbols-outlined text-[20px]">info</span>
+<span class="text-[10px] font-bold uppercase tracking-wide">Catatan Penting</span>
+</div>
+<p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                            Batas waktu revisi dokumen kelayakan ekonomi adalah 28 Februari 2024 untuk menjaga jadwal persetujuan kementerian tepat waktu.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

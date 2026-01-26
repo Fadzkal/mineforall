@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal Perusahaan - Reklamasi &amp; Penutupan Tambang</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white transition-colors duration-300">
+<div class="relative flex min-h-screen">
+<aside class="w-72 bg-white dark:bg-[#182430] border-r border-[#dbe0e6] dark:border-[#2a343e] flex flex-col fixed inset-y-0 z-50">
+<div class="p-6 border-b border-[#dbe0e6] dark:border-[#2a343e]">
+<div class="flex items-center gap-3">
+<img alt="Logo" class="size-10 rounded-lg object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPVCN5bmivOUZnPwYIYxcT72OzIufYdZiFCH5rDBEErIKrOTPdd1FjAp7E3hEBL0QgURwxJjmLMHZEm4e9gtF0yEHKCZHiZEOr7nCOhDGJ9PrYMeErwVHLgtkUG_lRsx8eN-mKjYzfgsHErGTX_TmB83rJbZH5AgE8p3rKi_03ec62VpF7J9CxW1ydry8H07Wj_blFAo2FTriBBjeW2YBBKen_AUDuYSdZHaO5y5D0jglSDWJwUjrZRpDvDuKsWAM_WqYvz69V5Xo"/>
+<h2 class="text-[#111418] dark:text-white text-xl font-black leading-tight tracking-tight">Mine For All</h2>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#617589] dark:text-[#a0acb9] hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e] transition-colors" href="../dashboard.html">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#617589] dark:text-[#a0acb9] hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+<span class="font-semibold">Tahap Pra-Tambang</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#617589] dark:text-[#a0acb9] hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">event_note</span>
+<span class="font-semibold">Perencanaan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#617589] dark:text-[#a0acb9] hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">precision_manufacturing</span>
+<span class="font-semibold">Operasional</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#617589] dark:text-[#a0acb9] hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+<span class="font-semibold">Kepatuhan</span>
+</a>
+<div class="pt-2">
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/5 dark:bg-primary/10">
+<span class="material-symbols-outlined text-[24px]">eco</span>
+<span class="font-bold">Pasca-Tambang</span>
+</div>
+<div class="ml-9 mt-1 space-y-1">
+<a class="flex items-center px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold" href="#">
+                        Reklamasi
+                    </a>
+<a class="flex items-center px-4 py-2 rounded-lg text-[#617589] dark:text-[#a0acb9] text-sm font-semibold hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e]" href="#">
+                        Penutupan
+                    </a>
+</div>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#617589] dark:text-[#a0acb9] hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">folder_open</span>
+<span class="font-semibold">Arsip Dokumen</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#617589] dark:text-[#a0acb9] hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="font-semibold">Pengaturan</span>
+</a>
+</nav>
+<div class="p-4 border-t border-[#dbe0e6] dark:border-[#2a343e]">
+<div class="flex items-center gap-3 p-2">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">JD</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold truncate">John Doe</p>
+<p class="text-xs text-[#617589] truncate">Manajer Tambang</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 ml-72">
+<div class="flex flex-col items-center py-8">
+<div class="w-full max-w-[1280px] px-4 md:px-10 flex flex-col gap-8">
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-[#111418] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Reklamasi &amp; Penutupan Tambang</h1>
+<p class="text-[#617589] dark:text-[#a0acb9] text-base font-normal">Dasbor pemantauan rehabilitasi lingkungan dan kepatuhan regulasi.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 rounded-lg h-10 px-4 bg-[#f0f2f4] dark:bg-[#2a343e] text-[#111418] dark:text-white text-sm font-bold border border-[#dbe0e6] dark:border-transparent">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+<span>Unduh Laporan</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#182430] border border-[#dbe0e6] dark:border-[#2a343e] shadow-sm">
+<p class="text-[#617589] dark:text-[#a0acb9] text-sm font-medium">Total Hektar Direklamasi</p>
+<p class="text-[#111418] dark:text-white text-2xl font-bold">1.240 ha</p>
+<p class="text-[#078838] text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +12,4% vs Thn Lalu
+                        </p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#182430] border border-[#dbe0e6] dark:border-[#2a343e] shadow-sm">
+<p class="text-[#617589] dark:text-[#a0acb9] text-sm font-medium">Progres Kepatuhan</p>
+<div class="flex items-end justify-between">
+<p class="text-[#111418] dark:text-white text-2xl font-bold">85%</p>
+<span class="text-[#078838] text-sm font-bold">3/4 Fase</span>
+</div>
+<div class="w-full bg-[#f0f2f4] dark:bg-[#2a343e] h-2 rounded-full mt-1">
+<div class="bg-primary h-full rounded-full w-[85%]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#182430] border border-[#dbe0e6] dark:border-[#2a343e] shadow-sm">
+<p class="text-[#617589] dark:text-[#a0acb9] text-sm font-medium">Tingkat Kelangsungan Hidup Vegetasi</p>
+<p class="text-[#111418] dark:text-white text-2xl font-bold">92%</p>
+<p class="text-[#078838] text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Target: 90%
+                        </p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#182430] border border-[#dbe0e6] dark:border-[#2a343e] shadow-sm">
+<p class="text-[#617589] dark:text-[#a0acb9] text-sm font-medium">Inventaris Topsoil</p>
+<p class="text-[#111418] dark:text-white text-2xl font-bold">45.800 m³</p>
+<p class="text-primary text-sm font-bold">Tersedia untuk Fase 4</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 flex flex-col gap-4">
+<div class="bg-white dark:bg-[#182430] rounded-xl border border-[#dbe0e6] dark:border-[#2a343e] overflow-hidden shadow-sm">
+<div class="p-4 border-b border-[#dbe0e6] dark:border-[#2a343e] flex justify-between items-center">
+<h3 class="font-bold text-lg">Status Lokasi Interaktif</h3>
+<div class="flex gap-2">
+<span class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+<span class="size-2 rounded-full bg-green-500"></span> Direklamasi
+                                    </span>
+<span class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400 rounded">
+<span class="size-2 rounded-full bg-orange-500"></span> Aktif
+                                    </span>
+</div>
+</div>
+<div class="aspect-video w-full bg-[#f0f2f4] dark:bg-[#2a343e] flex items-center justify-center relative group">
+<div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8BIPh3gkn2mQBYAloXQNuLCVLS_j0VTwmdrfqpzeqCeP-jbRmpRMkw-SOqzxWZNBLMBkWdQsiLY0DIkK1PAgFgBOdyPmszINswc57B6S5yJMLEn6iYCvTm4FPahSqkV-k8aEPv7y1-KB5tuGirfq4ibjL8eLLiiQNgiVOqK0mWv04PtOHg5dvhdxQhk8rDXTLlHsqIXevw9164iLMjun2naU3IIKuhKWAotYUa1kWNwvjKK-4fpnE7zFTmfF74jO9x9PURwRp1xI');"></div>
+<div class="absolute bottom-4 left-4 flex flex-col gap-2">
+<button class="bg-white dark:bg-[#182430] p-2 rounded-lg shadow-lg flex flex-col items-center">
+<span class="material-symbols-outlined">add</span>
+<hr class="w-full my-1 border-[#dbe0e6] dark:border-[#2a343e]"/>
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#182430] rounded-xl border border-[#dbe0e6] dark:border-[#2a343e] p-6 shadow-sm">
+<h3 class="text-[#111418] dark:text-white text-xl font-bold mb-6">Data Lapangan Lingkungan</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold">Tingkat Kelangsungan Hidup Vegetasi (%)</label>
+<div class="flex items-center gap-3">
+<input class="w-full h-2 bg-[#f0f2f4] dark:bg-[#2a343e] rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="0" type="range" value="92"/>
+<span class="text-sm font-bold w-10 text-center">92%</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold">Volume Topsoil (m³)</label>
+<input class="form-input rounded-lg border-[#dbe0e6] dark:border-[#2a343e] bg-white dark:bg-[#101922] focus:ring-primary" type="number" value="45800"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold">Jumlah Spesies Pohon</label>
+<div class="flex items-center border border-[#dbe0e6] dark:border-[#2a343e] rounded-lg overflow-hidden h-10">
+<button class="px-3 hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e] h-full text-lg">-</button>
+<input class="w-full text-center border-none bg-transparent focus:ring-0" type="text" value="14"/>
+<button class="px-3 hover:bg-[#f0f2f4] dark:hover:bg-[#2a343e] h-full text-lg">+</button>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-primary text-white font-bold py-2 px-8 rounded-lg hover:opacity-90 transition-opacity">Kirim Pembaruan</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-white dark:bg-[#182430] rounded-xl border border-[#dbe0e6] dark:border-[#2a343e] p-6 shadow-sm">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold mb-4">Alur Persetujuan Akhir</h3>
+<div class="flex flex-col gap-4">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="w-0.5 h-full bg-primary mt-1"></div>
+</div>
+<div class="pb-6">
+<p class="text-sm font-bold">Analisis Tanah Awal</p>
+<p class="text-xs text-[#617589]">Selesai pada 12 Jan 2024</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="w-0.5 h-full bg-primary mt-1"></div>
+</div>
+<div class="pb-6">
+<p class="text-sm font-bold">Penanaman Vegetasi</p>
+<p class="text-xs text-[#617589]">Diverifikasi oleh Kantor Wilayah</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="size-6 rounded-full border-2 border-primary flex items-center justify-center text-primary">
+<div class="size-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+<div class="w-0.5 h-full bg-[#dbe0e6] dark:bg-[#2a343e] mt-1"></div>
+</div>
+<div class="pb-6">
+<p class="text-sm font-bold">Audit Stabilitas Erosi</p>
+<p class="text-xs text-primary font-medium">Dalam Progres - 60%</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="size-6 rounded-full border-2 border-[#dbe0e6] dark:border-[#2a343e] flex items-center justify-center text-[#617589]">
+<span class="text-[12px]">4</span>
+</div>
+</div>
+<div>
+<p class="text-sm font-bold text-[#617589]">Sertifikat Penutupan Akhir</p>
+<p class="text-xs text-[#617589]">Menunggu Keberhasilan Audit</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#182430] rounded-xl border border-[#dbe0e6] dark:border-[#2a343e] p-6 shadow-sm">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold mb-4">Bukti &amp; Sertifikat</h3>
+<div class="flex flex-col gap-4">
+<div class="border-2 border-dashed border-[#dbe0e6] dark:border-[#2a343e] rounded-lg p-6 flex flex-col items-center gap-2 cursor-pointer hover:bg-[#f0f2f4] dark:hover:bg-[#1c2a38] transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px]">cloud_upload</span>
+<p class="text-sm font-bold">Klik atau seret untuk unggah</p>
+<p class="text-xs text-[#617589]">PNG, JPG, PDF hingga 10MB</p>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 rounded-lg bg-[#f0f2f4] dark:bg-[#2a343e]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">image</span>
+<div>
+<p class="text-xs font-bold truncate max-w-[120px]">Situs_Utara_Setelah.jpg</p>
+<p class="text-[10px] text-[#617589]">Kemarin, 16:30</p>
+</div>
+</div>
+<span class="text-[10px] font-bold bg-[#078838]/20 text-[#078838] px-2 py-1 rounded">Terverifikasi</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-[#f0f2f4] dark:bg-[#2a343e]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#617589]">description</span>
+<div>
+<p class="text-xs font-bold truncate max-w-[120px]">Laporan_Tanah_Q1.pdf</p>
+<p class="text-[10px] text-[#617589]">2 hari lalu</p>
+</div>
+</div>
+<span class="text-[10px] font-bold bg-orange-500/20 text-orange-500 px-2 py-1 rounded">Tertunda</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
+<div class="bg-white dark:bg-[#182430] rounded-xl border border-[#dbe0e6] dark:border-[#2a343e] overflow-hidden shadow-sm">
+<div class="p-4 border-b border-[#dbe0e6] dark:border-[#2a343e]">
+<h4 class="font-bold">Sebelum Reklamasi (2020)</h4>
+</div>
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA17GOsQGTdeZu7V1VYvIAREinXRo54bzY2-jdOYQY43phbT4EyrKThukFQZOtAhlUziYp-9wjaADjejPvwaWaP1VC21qD-o1xyy9EpVreW9_dEBJwfq-IWWCXyh3SCB0h5Jz2lKHShwHRTxV_Tn4TWlpi2LvmEp5izzMGLnJfd-J3D4dM42FQoaOQJS1XubhHZcSk6lYmrmAGy8VD_7cZNBdURYhWnsc6KEqYhe2yU4a8TANLx8B8gE7iryiXa_8DMqp9vNoyS3-8');"></div>
+</div>
+<div class="bg-white dark:bg-[#182430] rounded-xl border border-[#dbe0e6] dark:border-[#2a343e] overflow-hidden shadow-sm">
+<div class="p-4 border-b border-[#dbe0e6] dark:border-[#2a343e]">
+<h4 class="font-bold">Setelah Rehabilitasi (Sekarang)</h4>
+</div>
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUPri61ObFVhCG5GXFIDFkYW7nbSxHrXIGqoPYbv2ziQb5QPmHEEccd1cESBagqyAVIXcb9LfBSDIN2uFdMq5H7zltEyP70xas5PN6oGltlEmNaA1TiQxnf-JZqKfgsWH6oZ4qkM5CR2r2j_bySxnZIwBOsOPUpCL6Xt3-8qBI7HRb3xJ1_mAwabHfx8cYaO1oLHHDfNz54pZWGOILj6r8HgSRixcTXHGEikM-C3366gMTYJFfcLAlV8fsjm6qcqaHDHJoSGeVMPw');"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
