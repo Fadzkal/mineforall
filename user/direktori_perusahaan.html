@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html class="light" lang="id"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Portal Publik - Direktori Perusahaan Tambang | Mine For All</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Portal Publik - Direktori Perusahaan Tambang | Mine For All</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
       tailwind.config = {
         darkMode: "class",
         theme: {
@@ -14,7 +15,7 @@
             colors: {
               primary: "#1e3a8a", // Deep Blue
               accent: "#ca8a04", // Gold
-              "background-light": "#ffffff",
+              "background-light": "#f8fafc",
               "background-dark": "#020617",
             },
             fontFamily: {
@@ -28,7 +29,7 @@
         },
       };
     </script>
-<style type="text/tailwindcss">
+    <style type="text/tailwindcss">
         .compliance-badge-high {
             @apply bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400;
         }
@@ -41,316 +42,488 @@
         .data-table-header {
             @apply text-left text-xs font-bold text-slate-500 uppercase tracking-wider py-4 px-6 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800;
         }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* --- CSS Sidebar Animasi (Sama dengan Dashboard) --- */
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .menu-active .submenu {
+            max-height: 200px;
+        }
+        .menu-active .arrow-icon {
+            transform: rotate(180deg);
+        }
+        .arrow-icon {
+            transition: transform 0.3s;
+        }
+
+        #sidebar {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* State Collapsed */
+        #sidebar.collapsed {
+            width: 5rem; /* w-20 */
+        }
+        
+        #sidebar.collapsed .sidebar-text,
+        #sidebar.collapsed .logo-details,
+        #sidebar.collapsed .arrow-icon,
+        #sidebar.collapsed .user-details {
+            display: none;
+            opacity: 0;
+        }
+
+        #sidebar.collapsed .menu-link {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        #sidebar.collapsed .sidebar-header {
+            justify-content: center;
+            padding: 1.5rem 0; 
+        }
+
+        #sidebar.collapsed .submenu {
+            display: none !important;
+        }
+        
+        /* Tooltip saat collapsed */
+        #sidebar.collapsed .menu-link:hover::after {
+            content: attr(data-title);
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 10px;
+            padding: 5px 10px;
+            background: #1e293b;
+            color: white;
+            font-size: 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 50;
+            opacity: 1;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
-<aside class="fixed left-0 top-0 h-screen w-20 flex flex-col items-center py-8 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 z-50">
-<div class="mb-10">
-<img alt="Mine For All Logo" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi0PNKoNpO-9ZmvvdUH_3_5m3FmTIuFZWIk8rQ6uCuOXMrsS6Ed7nDkEw8VGYSe1Ms-kdIDZaXngDiLkuJo6lJ2VYaX8rw2kGpZZ6Of4uycQbu3GUp_X2DSrluz2dXOrRpN7sE_Vu2oRGaU650-ZEjvA4xHUyDHmIQ3Mf8yFWPJ3gKHbQBgxmzE4aZ5Roe2ObgC3JyjwcFGhdpPGdk93IY2-lD9mKOgOPcw7Z41_Ire5FdCBz8WCwvrOKZrM-7uQzQIfp5hin6jkE"/>
-</div>
-<nav class="flex flex-col gap-6 flex-1">
-<a class="p-3 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="dashboard.html" title="Dashboard Utama">
-<span class="material-symbols-outlined">dashboard</span>
-</a>
-<a class="p-3 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#" title="Peta Sebaran Tambang">
-<span class="material-symbols-outlined">map</span>
-</a>
-<a class="p-3 bg-primary/10 text-primary dark:text-accent rounded-xl" href="#" title="Direktori Perusahaan">
-<span class="material-symbols-outlined">business</span>
-</a>
-<a class="p-3 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#" title="Data Produksi (MODI)">
-<span class="material-symbols-outlined">analytics</span>
-</a>
-<a class="p-3 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#" title="Dampak Sosial &amp; Lingkungan">
-<span class="material-symbols-outlined">eco</span>
-</a>
-<a class="p-3 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#" title="Timeline Proyek">
-<span class="material-symbols-outlined">history</span>
-</a>
-<a class="p-3 text-slate-400 hover:text-primary dark:hover:text-accent transition-colors" href="#" title="Laporan Publik">
-<span class="material-symbols-outlined">description</span>
-</a>
-</nav>
-<div class="mt-auto flex flex-col gap-6">
-<button class="p-3 text-slate-400 hover:text-primary" onclick="document.documentElement.classList.toggle('dark')">
-<span class="material-symbols-outlined">dark_mode</span>
-</button>
-<a class="p-3 text-slate-400 hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">settings</span>
-</a>
-</div>
-</aside>
-<main class="ml-20 min-h-screen">
-<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-6">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-<div>
-<h1 class="text-2xl font-display font-bold text-primary dark:text-slate-100 flex items-center gap-2">
-                    DIREKTORI <span class="text-accent">PERUSAHAAN</span>
-</h1>
-<p class="text-slate-500 dark:text-slate-400 text-sm">Registrasi resmi pemegang izin pertambangan dan status kepatuhan.</p>
-</div>
-<div class="flex items-center gap-4">
-<button class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-<span class="material-symbols-outlined text-sm">download</span>
-                    Ekspor Daftar
-                </button>
-<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm">
-<span class="material-symbols-outlined text-sm">add</span>
-                    Ajukan Izin
-                </button>
-</div>
-</div>
-</header>
-<section class="bg-slate-50 dark:bg-slate-950/50 border-b border-slate-200 dark:border-slate-800 p-6">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col lg:flex-row gap-4">
-<div class="relative flex-1">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-<input class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="Cari nama perusahaan, NIB, atau nomor izin..." type="text"/>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-<select class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
-<option>Jenis Komoditas</option>
-<option>Emas</option>
-<option>Batubara</option>
-<option>Nikel</option>
-<option>Tembaga</option>
-</select>
-<select class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
-<option>Status Izin</option>
-<option>IUP Aktif</option>
-<option>Ditangguhkan</option>
-<option>Kedaluwarsa</option>
-<option>Dalam Peninjauan</option>
-</select>
-<select class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
-<option>Wilayah</option>
-<option>Kalimantan</option>
-<option>Sulawesi</option>
-<option>Sumatera</option>
-<option>Papua</option>
-</select>
-<button class="flex items-center justify-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-<span class="material-symbols-outlined text-sm">filter_list</span>
-                        Lanjutan
-                    </button>
-</div>
-</div>
-<div class="flex flex-wrap gap-2 mt-4">
-<span class="px-3 py-1 bg-primary/10 text-primary dark:text-accent rounded-full text-xs font-medium flex items-center gap-2 border border-primary/20">
-                    IUP Aktif <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
-</span>
-<span class="px-3 py-1 bg-primary/10 text-primary dark:text-accent rounded-full text-xs font-medium flex items-center gap-2 border border-primary/20">
-                    Nikel <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
-</span>
-<button class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 underline">Bersihkan semua filter</button>
-</div>
-</div>
-</section>
-<section class="p-6">
-<div class="max-w-7xl mx-auto">
-<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
-<div class="overflow-x-auto">
-<table class="w-full text-sm">
-<thead>
-<tr>
-<th class="data-table-header">Nama Perusahaan</th>
-<th class="data-table-header">Skor Kepatuhan</th>
-<th class="data-table-header">Komoditas / Wilayah</th>
-<th class="data-table-header">Tahapan Operasi</th>
-<th class="data-table-header">Dokumen</th>
-<th class="data-table-header">Aksi</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-<td class="px-6 py-5">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary font-bold">BP</div>
-<div>
-<div class="font-bold text-slate-900 dark:text-white">PT. Bumi Pratama Mandiri</div>
-<div class="text-[11px] text-slate-500">ID Izin: IUP-2024-0012-KLT</div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex items-center gap-2">
-<span class="px-2 py-1 rounded compliance-badge-high font-bold text-xs">98.5%</span>
-<div class="flex gap-0.5">
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex flex-col gap-1">
-<span class="font-medium text-slate-700 dark:text-slate-300">Batubara</span>
-<span class="text-[11px] text-slate-500">Kalimantan Timur</span>
-</div>
-</td>
-<td class="px-6 py-5">
-<span class="status-pill bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">Operasi</span>
-</td>
-<td class="px-6 py-5">
-<div class="flex gap-2">
-<a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Dokumen AMDAL">
-<span class="material-symbols-outlined text-lg">description</span>
-</a>
-<a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Laporan Publik">
-<span class="material-symbols-outlined text-lg">assessment</span>
-</a>
-</div>
-</td>
-<td class="px-6 py-5 text-right">
-<button class="text-primary dark:text-accent font-bold text-xs hover:underline">DETAIL</button>
-</td>
-</tr>
-<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-<td class="px-6 py-5">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary font-bold">NS</div>
-<div>
-<div class="font-bold text-slate-900 dark:text-white">Nusa Tenggara Resources</div>
-<div class="text-[11px] text-slate-500">ID Izin: IUP-2023-4521-SLW</div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex items-center gap-2">
-<span class="px-2 py-1 rounded compliance-badge-mid font-bold text-xs">82.1%</span>
-<div class="flex gap-0.5">
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-slate-300">star</span>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex flex-col gap-1">
-<span class="font-medium text-slate-700 dark:text-slate-300">Nikel</span>
-<span class="text-[11px] text-slate-500">Sulawesi Selatan</span>
-</div>
-</td>
-<td class="px-6 py-5">
-<span class="status-pill bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">Eksplorasi</span>
-</td>
-<td class="px-6 py-5">
-<div class="flex gap-2">
-<a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Dokumen AMDAL">
-<span class="material-symbols-outlined text-lg">description</span>
-</a>
-<a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Laporan Publik">
-<span class="material-symbols-outlined text-lg">assessment</span>
-</a>
-</div>
-</td>
-<td class="px-6 py-5 text-right">
-<button class="text-primary dark:text-accent font-bold text-xs hover:underline">DETAIL</button>
-</td>
-</tr>
-<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-<td class="px-6 py-5">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary font-bold">GJ</div>
-<div>
-<div class="font-bold text-slate-900 dark:text-white">Gema Jaya Abadi</div>
-<div class="text-[11px] text-slate-500">ID Izin: IUP-2021-0882-SUM</div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex items-center gap-2">
-<span class="px-2 py-1 rounded compliance-badge-high font-bold text-xs">94.8%</span>
-<div class="flex gap-0.5">
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
-<span class="material-symbols-outlined text-sm text-accent fill-0.5">star</span>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex flex-col gap-1">
-<span class="font-medium text-slate-700 dark:text-slate-300">Emas</span>
-<span class="text-[11px] text-slate-500">Sumatera Selatan</span>
-</div>
-</td>
-<td class="px-6 py-5">
-<span class="status-pill bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Reklamasi</span>
-</td>
-<td class="px-6 py-5">
-<div class="flex gap-2">
-<a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Dokumen AMDAL">
-<span class="material-symbols-outlined text-lg">description</span>
-</a>
-<a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Laporan Publik">
-<span class="material-symbols-outlined text-lg">assessment</span>
-</a>
-</div>
-</td>
-<td class="px-6 py-5 text-right">
-<button class="text-primary dark:text-accent font-bold text-xs hover:underline">DETAIL</button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="bg-white dark:bg-slate-900 px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-<div class="text-xs text-slate-500">
-                        Menampilkan <span class="font-bold">1</span> sampai <span class="font-bold">4</span> dari <span class="font-bold">452</span> perusahaan
+
+<div class="flex min-h-screen overflow-hidden">
+    <aside id="sidebar" class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col sticky top-0 h-screen z-50">
+        <div class="p-6 border-b border-slate-100 dark:border-slate-800 sidebar-header flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="size-10 min-w-10 rounded-xl flex items-center justify-center bg-primary text-white">
+                    <span class="material-symbols-outlined text-2xl">mining</span>
+                </div>
+                <div class="flex flex-col logo-details whitespace-nowrap overflow-hidden">
+                    <h2 class="text-sm font-bold leading-tight dark:text-white">Mine For All</h2>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Portal Publik</p>
+                </div>
+            </div>
+            <button onclick="toggleSidebar()" class="sidebar-text p-1 text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                <span class="material-symbols-outlined">first_page</span>
+            </button>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-2" id="sidebar-nav">
+            
+            <button id="btn-expand" onclick="toggleSidebar()" class="w-full hidden justify-center p-2 mb-4 text-slate-400 hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">last_page</span>
+            </button>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors menu-link relative group" href="dashboard.html" data-title="Dashboard Utama">
+                <span class="material-symbols-outlined min-w-[24px] text-slate-400">dashboard</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Dashboard Utama</span>
+            </a>
+
+            <div class="menu-item">
+                <button onclick="toggleMenu(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group menu-link relative" data-title="Peta Sebaran">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary min-w-[24px]">map</span>
+                        <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Peta Sebaran</span>
                     </div>
-<div class="flex gap-1">
-<button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-800 text-slate-400 hover:bg-slate-50">
-<span class="material-symbols-outlined text-sm">chevron_left</span>
-</button>
-<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white text-xs font-bold">1</button>
-<button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs hover:bg-slate-50">2</button>
-<button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs hover:bg-slate-50">3</button>
-<button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-800 text-slate-400 hover:bg-slate-50">
-<span class="material-symbols-outlined text-sm">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="max-w-7xl mx-auto px-6 mb-12">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="bg-primary text-white p-6 rounded-2xl flex items-center gap-4 relative overflow-hidden">
-<div class="relative z-10">
-<div class="text-[10px] uppercase font-bold opacity-70 mb-1">Total Izin Aktif</div>
-<div class="text-2xl font-display font-bold">4.192</div>
-</div>
-<span class="material-symbols-outlined text-5xl absolute right-4 opacity-10">description</span>
-</div>
-<div class="bg-accent text-slate-900 p-6 rounded-2xl flex items-center gap-4 relative overflow-hidden">
-<div class="relative z-10">
-<div class="text-[10px] uppercase font-bold opacity-70 mb-1">Rata-rata Kepatuhan</div>
-<div class="text-2xl font-display font-bold">89,4%</div>
-</div>
-<span class="material-symbols-outlined text-5xl absolute right-4 opacity-20">verified</span>
-</div>
-<div class="bg-slate-900 text-white p-6 rounded-2xl flex items-center gap-4 relative overflow-hidden">
-<div class="relative z-10">
-<div class="text-[10px] uppercase font-bold opacity-70 mb-1">Entri Baru (30 Hari)</div>
-<div class="text-2xl font-display font-bold">+24</div>
-</div>
-<span class="material-symbols-outlined text-5xl absolute right-4 opacity-20">update</span>
-</div>
-</div>
-</section>
-</main>
-<div class="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 flex justify-around items-center z-50">
-<span class="material-symbols-outlined text-slate-400">dashboard</span>
-<span class="material-symbols-outlined text-primary">business</span>
-<span class="material-symbols-outlined text-slate-400">analytics</span>
-<span class="material-symbols-outlined text-slate-400">notifications</span>
+                </button>
+            </div>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-md shadow-primary/20 menu-link relative group" href="direktori_perusahaan.html" data-title="Direktori Perusahaan">
+                <span class="material-symbols-outlined min-w-[24px]">business</span>
+                <span class="text-sm font-semibold sidebar-text whitespace-nowrap">Direktori Perusahaan</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors menu-link relative group" href="data_produksi.html" data-title="Data Produksi">
+                <span class="material-symbols-outlined text-slate-400 min-w-[24px]">analytics</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Data Produksi</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors menu-link relative group" href="portal_dampak.html" data-title="Dampak Sosial">
+                <span class="material-symbols-outlined text-slate-400 min-w-[24px]">eco</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Dampak Sosial & Lingk.</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors menu-link relative group" href="timeline_proyek.html" data-title="Timeline Proyek">
+                <span class="material-symbols-outlined text-slate-400 min-w-[24px]">timeline</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Timeline Proyek</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors menu-link relative group" href="laporan.html" data-title="Laporan Publik">
+                <span class="material-symbols-outlined text-slate-400 min-w-[24px]">description</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Laporan Publik</span>
+            </a>
+
+            <div class="menu-item mt-auto">
+                <button onclick="toggleMenu(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group menu-link relative" data-title="Pengaturan">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary min-w-[24px]">settings</span>
+                        <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Pengaturan</span>
+                    </div>
+                    <span class="material-symbols-outlined text-sm arrow-icon text-slate-400">expand_more</span>
+                </button>
+                <div class="submenu flex flex-col pl-12 space-y-1 mt-1 sidebar-text">
+                    <button class="w-full text-left text-xs py-2 text-slate-500 hover:text-primary transition-colors flex items-center gap-2" onclick="document.documentElement.classList.toggle('dark')">
+                        <span class="material-symbols-outlined text-[16px]">dark_mode</span> Mode Gelap
+                    </button>
+                    <a href="#" class="text-xs py-2 text-slate-500 hover:text-primary transition-colors block">Profil Pengguna</a>
+                    <a href="#" class="text-xs py-2 text-slate-500 hover:text-primary transition-colors block">Notifikasi</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 menu-link relative">
+                <div class="size-10 min-w-10 rounded-full border-2 border-white dark:border-slate-700 bg-accent flex items-center justify-center text-slate-900">
+                    <span class="material-symbols-outlined font-bold">person</span>
+                </div>
+                <div class="flex-1 min-w-0 user-details overflow-hidden">
+                    <p class="text-xs font-bold truncate">Pengunjung Publik</p>
+                    <p class="text-[10px] text-slate-500 font-medium truncate">Akses Terbatas</p>
+                </div>
+                <span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-red-500 transition-colors user-details">login</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <h1 class="text-2xl font-display font-bold text-primary dark:text-slate-100 flex items-center gap-2">
+                        DIREKTORI <span class="text-accent">PERUSAHAAN</span>
+                    </h1>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Registrasi resmi pemegang izin pertambangan dan status kepatuhan.</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <span class="material-symbols-outlined text-sm">download</span>
+                        Ekspor Daftar
+                    </button>
+                    <button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm">
+                        <span class="material-symbols-outlined text-sm">add</span>
+                        Ajukan Izin
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <section class="bg-slate-50 dark:bg-slate-950/50 border-b border-slate-200 dark:border-slate-800 p-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:flex-row gap-4">
+                    <div class="relative flex-1">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+                        <input class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="Cari nama perusahaan, NIB, atau nomor izin..." type="text"/>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <select class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
+                            <option>Jenis Komoditas</option>
+                            <option>Emas</option>
+                            <option>Batubara</option>
+                            <option>Nikel</option>
+                            <option>Tembaga</option>
+                        </select>
+                        <select class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
+                            <option>Status Izin</option>
+                            <option>IUP Aktif</option>
+                            <option>Ditangguhkan</option>
+                            <option>Kedaluwarsa</option>
+                            <option>Dalam Peninjauan</option>
+                        </select>
+                        <select class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
+                            <option>Wilayah</option>
+                            <option>Kalimantan</option>
+                            <option>Sulawesi</option>
+                            <option>Sumatera</option>
+                            <option>Papua</option>
+                        </select>
+                        <button class="flex items-center justify-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="material-symbols-outlined text-sm">filter_list</span>
+                            Lanjutan
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-3 py-1 bg-primary/10 text-primary dark:text-accent rounded-full text-xs font-medium flex items-center gap-2 border border-primary/20">
+                        IUP Aktif <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+                    </span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary dark:text-accent rounded-full text-xs font-medium flex items-center gap-2 border border-primary/20">
+                        Nikel <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+                    </span>
+                    <button class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 underline">Bersihkan semua filter</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr>
+                                    <th class="data-table-header">Nama Perusahaan</th>
+                                    <th class="data-table-header">Skor Kepatuhan</th>
+                                    <th class="data-table-header">Komoditas / Wilayah</th>
+                                    <th class="data-table-header">Tahapan Operasi</th>
+                                    <th class="data-table-header">Dokumen</th>
+                                    <th class="data-table-header">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-5">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary font-bold">BP</div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 dark:text-white">PT. Bumi Pratama Mandiri</div>
+                                                <div class="text-[11px] text-slate-500">ID Izin: IUP-2024-0012-KLT</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex items-center gap-2">
+                                            <span class="px-2 py-1 rounded compliance-badge-high font-bold text-xs">98.5%</span>
+                                            <div class="flex gap-0.5">
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700 dark:text-slate-300">Batubara</span>
+                                            <span class="text-[11px] text-slate-500">Kalimantan Timur</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <span class="status-pill bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">Operasi</span>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex gap-2">
+                                            <a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Dokumen AMDAL">
+                                                <span class="material-symbols-outlined text-lg">description</span>
+                                            </a>
+                                            <a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Laporan Publik">
+                                                <span class="material-symbols-outlined text-lg">assessment</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5 text-right">
+                                        <button class="text-primary dark:text-accent font-bold text-xs hover:underline">DETAIL</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-5">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary font-bold">NS</div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 dark:text-white">Nusa Tenggara Resources</div>
+                                                <div class="text-[11px] text-slate-500">ID Izin: IUP-2023-4521-SLW</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex items-center gap-2">
+                                            <span class="px-2 py-1 rounded compliance-badge-mid font-bold text-xs">82.1%</span>
+                                            <div class="flex gap-0.5">
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-slate-300">star</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700 dark:text-slate-300">Nikel</span>
+                                            <span class="text-[11px] text-slate-500">Sulawesi Selatan</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <span class="status-pill bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">Eksplorasi</span>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex gap-2">
+                                            <a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Dokumen AMDAL">
+                                                <span class="material-symbols-outlined text-lg">description</span>
+                                            </a>
+                                            <a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Laporan Publik">
+                                                <span class="material-symbols-outlined text-lg">assessment</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5 text-right">
+                                        <button class="text-primary dark:text-accent font-bold text-xs hover:underline">DETAIL</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-5">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary font-bold">GJ</div>
+                                            <div>
+                                                <div class="font-bold text-slate-900 dark:text-white">Gema Jaya Abadi</div>
+                                                <div class="text-[11px] text-slate-500">ID Izin: IUP-2021-0882-SUM</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex items-center gap-2">
+                                            <span class="px-2 py-1 rounded compliance-badge-high font-bold text-xs">94.8%</span>
+                                            <div class="flex gap-0.5">
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-1">star</span>
+                                                <span class="material-symbols-outlined text-sm text-accent fill-0.5">star</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700 dark:text-slate-300">Emas</span>
+                                            <span class="text-[11px] text-slate-500">Sumatera Selatan</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <span class="status-pill bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Reklamasi</span>
+                                    </td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex gap-2">
+                                            <a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Dokumen AMDAL">
+                                                <span class="material-symbols-outlined text-lg">description</span>
+                                            </a>
+                                            <a class="p-1.5 text-slate-400 hover:text-primary transition-colors border border-slate-100 dark:border-slate-800 rounded" href="#" title="Laporan Publik">
+                                                <span class="material-symbols-outlined text-lg">assessment</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5 text-right">
+                                        <button class="text-primary dark:text-accent font-bold text-xs hover:underline">DETAIL</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bg-white dark:bg-slate-900 px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <div class="text-xs text-slate-500">
+                            Menampilkan <span class="font-bold">1</span> sampai <span class="font-bold">4</span> dari <span class="font-bold">452</span> perusahaan
+                        </div>
+                        <div class="flex gap-1">
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-800 text-slate-400 hover:bg-slate-50">
+                                <span class="material-symbols-outlined text-sm">chevron_left</span>
+                            </button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white text-xs font-bold">1</button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs hover:bg-slate-50">2</button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs hover:bg-slate-50">3</button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-800 text-slate-400 hover:bg-slate-50">
+                                <span class="material-symbols-outlined text-sm">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-6 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-primary text-white p-6 rounded-2xl flex items-center gap-4 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="text-[10px] uppercase font-bold opacity-70 mb-1">Total Izin Aktif</div>
+                        <div class="text-2xl font-display font-bold">4.192</div>
+                    </div>
+                    <span class="material-symbols-outlined text-5xl absolute right-4 opacity-10">description</span>
+                </div>
+                <div class="bg-accent text-slate-900 p-6 rounded-2xl flex items-center gap-4 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="text-[10px] uppercase font-bold opacity-70 mb-1">Rata-rata Kepatuhan</div>
+                        <div class="text-2xl font-display font-bold">89,4%</div>
+                    </div>
+                    <span class="material-symbols-outlined text-5xl absolute right-4 opacity-20">verified</span>
+                </div>
+                <div class="bg-slate-900 text-white p-6 rounded-2xl flex items-center gap-4 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="text-[10px] uppercase font-bold opacity-70 mb-1">Entri Baru (30 Hari)</div>
+                        <div class="text-2xl font-display font-bold">+24</div>
+                    </div>
+                    <span class="material-symbols-outlined text-5xl absolute right-4 opacity-20">update</span>
+                </div>
+            </div>
+        </section>
+    </main>
 </div>
 
-</body></html>
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 flex justify-around items-center z-50">
+    <a href="dashboard.html" class="material-symbols-outlined text-slate-400">dashboard</a>
+    <a href="direktori_perusahaan.html" class="material-symbols-outlined text-primary">business</a>
+    <a href="data_produksi.html" class="material-symbols-outlined text-slate-400">analytics</a>
+    <span class="material-symbols-outlined text-slate-400">notifications</span>
+</div>
+
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const expandBtn = document.getElementById('btn-expand');
+
+    function toggleSidebar() {
+        sidebar.classList.toggle('collapsed');
+        
+        if (sidebar.classList.contains('collapsed')) {
+            expandBtn.classList.remove('hidden');
+            expandBtn.classList.add('flex');
+        } else {
+            expandBtn.classList.add('hidden');
+            expandBtn.classList.remove('flex');
+        }
+
+        if (sidebar.classList.contains('collapsed')) {
+             document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('menu-active');
+            });
+        }
+    }
+
+    function toggleMenu(button) {
+        if(sidebar.classList.contains('collapsed')) {
+            toggleSidebar();
+        }
+        const menuItem = button.parentElement;
+        document.querySelectorAll('.menu-item').forEach(item => {
+            if (item !== menuItem) {
+                item.classList.remove('menu-active');
+            }
+        });
+        menuItem.classList.toggle('menu-active');
+    }
+</script>
+
+</body>
+</html>
