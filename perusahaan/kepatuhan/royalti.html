@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html class="light" lang="id"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Finansial &amp; Royalti | Mine For All</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Portal Perusahaan - Finansial & Royalti</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -16,427 +18,529 @@
                         "primary": "#137fec",
                         "background-light": "#f6f7f8",
                         "background-dark": "#101922",
-                        "sidebar-dark": "#1a222c",
                     },
                     fontFamily: {
-                        "display": ["Public Sans"]
+                        "display": ["Public Sans", "sans-serif"]
                     },
                     borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
                 },
             },
         }
     </script>
-<style type="text/tailwindcss">
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    <style type="text/tailwindcss">
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        
+        /* Sidebar Animations */
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
         }
-        .sidebar-item-active {
-            @apply bg-primary/10 text-primary border-r-4 border-primary;
+        .menu-active .submenu {
+            max-height: 200px;
         }
-        .sidebar-subitem-active {
-            @apply text-primary font-bold;
+        .menu-active .arrow-icon {
+            transform: rotate(180deg);
+        }
+        .arrow-icon {
+            transition: transform 0.3s;
+        }
+
+        #sidebar {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #sidebar.collapsed {
+            width: 5rem; /* w-20 */
+        }
+        
+        #sidebar.collapsed .sidebar-text,
+        #sidebar.collapsed .logo-details,
+        #sidebar.collapsed .arrow-icon,
+        #sidebar.collapsed .user-details {
+            display: none;
+            opacity: 0;
+        }
+
+        #sidebar.collapsed .menu-link {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        #sidebar.collapsed .sidebar-header {
+            justify-content: center;
+            padding: 1.5rem 0; 
+        }
+
+        #sidebar.collapsed .submenu {
+            display: none !important;
+        }
+        
+        #sidebar.collapsed .menu-link:hover::after {
+            content: attr(data-title);
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 10px;
+            padding: 5px 10px;
+            background: #1e293b;
+            color: white;
+            font-size: 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 50;
+            opacity: 1;
+            pointer-events: none;
         }
     </style>
 </head>
-<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen flex">
-<aside class="w-72 bg-white dark:bg-sidebar-dark border-r border-slate-200 dark:border-slate-800 h-screen sticky top-0 flex flex-col shrink-0 z-50">
-<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center gap-3">
-<div class="w-10 h-10 flex items-center justify-center overflow-hidden">
-<img alt="Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCQEPi5Jz_vnUPP8zEIxzvXdIObYEz3rcgVcRocHLeOVFs5yGW4ngM0rNNK4LMOmjnru_UCi42uwZSsRD9-R6CC-pbe307el_Xla6tJWD2tcmfP9oXq-mTPtnU8J1lYbWHK0ZMi9CVRizq6pHngJzDu195A9aXV7M82kQypFoBEik07lBRI0FbEUtyVz31AioSaTLjmCfehSCWOmossBWv7FCDDpk2vkpnM2xTL4pdtjK5fd_7CTiVUWu-bbXdR7R0QEPC8e27EFw"/>
-</div>
-<span class="font-bold text-lg tracking-tight dark:text-white uppercase">Mine <span class="text-primary">For</span> All</span>
-</div>
-<nav class="flex-1 overflow-y-auto py-4">
-<div class="px-4 mb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Menu Utama</div>
-<ul class="space-y-1">
-<li>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="../dashboard.html">
-<span class="material-symbols-outlined text-xl">dashboard</span>
-<span class="text-sm font-medium">Dashboard</span>
-</a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">explore</span>
-<span class="text-sm font-medium">Tahap Pra-Tambang</span>
-</a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">event_note</span>
-<span class="text-sm font-medium">Perencanaan</span>
-</a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">engineering</span>
-<span class="text-sm font-medium">Operasional</span>
-</a>
-</li>
-<li class="group">
-<div class="flex items-center justify-between px-4 py-3 text-primary bg-primary/5 border-r-4 border-primary">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-xl">verified_user</span>
-<span class="text-sm font-bold">Kepatuhan</span>
-</div>
-<span class="material-icons text-sm">expand_more</span>
-</div>
-<ul class="bg-slate-50 dark:bg-slate-900/50 py-2">
-<li>
-<a class="flex items-center gap-3 pl-12 pr-4 py-2 text-primary font-bold text-sm" href="#">
-<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                                Finansial &amp; Royalti
-                            </a>
-</li>
-<li>
-<a class="flex items-center gap-3 pl-12 pr-4 py-2 text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">
-<span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600"></span>
-                                Lingkungan
-                            </a>
-</li>
-</ul>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">restore_from_trash</span>
-<span class="text-sm font-medium">Pasca-Tambang</span>
-</a>
-</li>
-<li>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">folder_open</span>
-<span class="text-sm font-medium">Arsip Dokumen</span>
-</a>
-</li>
-</ul>
-<div class="px-4 mt-8 mb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sistem</div>
-<ul class="space-y-1">
-<li>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">settings</span>
-<span class="text-sm font-medium">Pengaturan</span>
-</a>
-</li>
-</ul>
-</nav>
-<div class="p-4 border-t border-slate-100 dark:border-slate-800">
-<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer transition-colors">
-<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700">
-<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZp9h0ha7JIVJIWVjgqRX38dSASLbtAC8wiRnSD3TQXTGm8cToOdC44lvy1GEfKYoKzmNO5RPB-pH61vCkZDN8DwpiP1gY10R10wtoJaiUcBpVCw8XSLnc1ULLsmST_MteYa4QDEouPYNSKiPnPrS94wZ-Wi85vxVv7WGAgX9R6y6rZI2ao_HNw8_ehzVypp62gqs3DchxuBB69L5WHiqjhid5HDTAznzTEbbr9XPk4nRh5HwfW6OqHqP0e3gWkrma02y5-rlqLsk"/>
-</div>
-<div class="min-w-0">
-<p class="text-sm font-bold truncate dark:text-white">Marcus Sterling</p>
-<p class="text-[10px] text-slate-500 uppercase font-bold tracking-tight">Direktur Keuangan</p>
-</div>
-</div>
-</div>
-</aside>
-<div class="flex-1 flex flex-col min-w-0">
-<main class="w-full max-w-[1440px] mx-auto px-8 py-8">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-<div>
-<nav class="flex text-xs font-medium text-slate-400 mb-2 uppercase tracking-widest">
-<span>Portal Perusahaan</span>
-<span class="mx-2">/</span>
-<span>Kepatuhan</span>
-<span class="mx-2">/</span>
-<span class="text-primary">Finansial &amp; Royalti</span>
-</nav>
-<h1 class="text-3xl font-bold dark:text-white">Transparansi Finansial &amp; Royalti</h1>
-<p class="text-slate-500 dark:text-slate-400 mt-1">Pengawasan real-time kewajiban pertambangan dan remitansi pemerintah.</p>
-</div>
-<div class="flex items-center gap-3">
-<div class="flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-1 shadow-sm">
-<button class="px-4 py-2 text-sm font-medium bg-primary text-white rounded shadow-sm">Tahun Fiskal Ini</button>
-<button class="px-4 py-2 text-sm font-medium text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded">2023</button>
-<button class="px-4 py-2 text-sm font-medium text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded">Semua Waktu</button>
-</div>
-<button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 transition-colors">
-<span class="material-icons text-sm">filter_list</span>
-<span>Filter</span>
-</button>
-<button class="flex items-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg shadow-md font-medium hover:bg-blue-600 transition-colors">
-<span class="material-icons text-sm">file_download</span>
-<span>Ekspor Laporan</span>
-</button>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
-<div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
-<span class="material-icons text-6xl">payments</span>
-</div>
-<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-4">
-<span class="material-icons text-sm">account_balance_wallet</span>
-<span class="text-sm font-semibold uppercase tracking-wider">Pendapatan Penjualan</span>
-</div>
-<div class="text-3xl font-bold dark:text-white mb-1">$42,850,000</div>
-<div class="flex items-center text-xs font-medium text-green-500">
-<span class="material-icons text-xs">trending_up</span>
-<span>12.5% vs Kuartal Lalu</span>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group border-l-4 border-l-primary">
-<div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
-<span class="material-icons text-6xl">calculate</span>
-</div>
-<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-4">
-<span class="material-icons text-sm">receipt_long</span>
-<span class="text-sm font-semibold uppercase tracking-wider">Estimasi Royalti</span>
-</div>
-<div class="text-3xl font-bold dark:text-white mb-1">$3,642,250</div>
-<div class="flex items-center text-xs font-medium text-slate-500">
-<span class="material-icons text-xs mr-1">check_circle</span>
-<span>Terverifikasi oleh Pemerintah</span>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
-<div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
-<span class="material-icons text-6xl">landscape</span>
-</div>
-<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-4">
-<span class="material-icons text-sm">foundation</span>
-<span class="text-sm font-semibold uppercase tracking-wider">Iuran Tetap (Land Rent)</span>
-</div>
-<div class="text-3xl font-bold dark:text-white mb-1">$890,000</div>
-<div class="flex items-center text-xs font-medium text-primary">
-<span class="material-icons text-xs mr-1">history</span>
-<span>Pembayaran Selanjutnya dalam 14 hari</span>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
-<div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
-<span class="material-icons text-6xl">gavel</span>
-</div>
-<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-4">
-<span class="material-icons text-sm">description</span>
-<span class="text-sm font-semibold uppercase tracking-wider">Pajak yang Dibayarkan</span>
-</div>
-<div class="text-3xl font-bold dark:text-white mb-1">$12,120,500</div>
-<div class="flex items-center text-xs font-medium text-green-500">
-<span class="material-icons text-xs">done_all</span>
-<span>Semua Pelaporan Lancar</span>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-<div class="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-<div class="flex items-center justify-between mb-8">
-<div>
-<h3 class="font-bold text-lg dark:text-white leading-none">Prakiraan Kewajiban Royalti</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Proyeksi kewajiban berdasarkan target produksi (12 Bulan Ke Depan)</p>
-</div>
-<div class="flex items-center gap-4">
-<div class="flex items-center gap-2">
-<span class="w-3 h-3 rounded-full bg-primary"></span>
-<span class="text-xs font-medium text-slate-500">Prakiraan</span>
-</div>
-<div class="flex items-center gap-2">
-<span class="w-3 h-3 rounded-full bg-slate-300"></span>
-<span class="text-xs font-medium text-slate-500">Target Produksi</span>
-</div>
-</div>
-</div>
-<div class="relative h-[300px] w-full mt-4 flex items-end justify-between gap-1">
-<div class="flex-1 bg-slate-100 dark:bg-slate-800 h-[60%] rounded-t-sm relative group">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-slate-800 text-white text-[10px] px-2 py-1 rounded transition-opacity whitespace-nowrap">Okt: $280k</div>
-</div>
-<div class="flex-1 bg-slate-100 dark:bg-slate-800 h-[65%] rounded-t-sm relative group"></div>
-<div class="flex-1 bg-slate-100 dark:bg-slate-800 h-[75%] rounded-t-sm relative group"></div>
-<div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[80%] rounded-t-sm relative group border-t-2 border-primary">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-slate-800 text-white text-[10px] px-2 py-1 rounded transition-opacity whitespace-nowrap">Jan: $340k</div>
-</div>
-<div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[85%] rounded-t-sm relative group border-t-2 border-primary"></div>
-<div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[90%] rounded-t-sm relative group border-t-2 border-primary"></div>
-<div class="flex-1 bg-primary h-[95%] rounded-t-sm relative group">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-100 bg-primary text-white text-[10px] px-2 py-1 rounded whitespace-nowrap font-bold">Puncak: $410k</div>
-</div>
-<div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[85%] rounded-t-sm relative group border-t-2 border-primary"></div>
-<div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[70%] rounded-t-sm relative group border-t-2 border-primary"></div>
-<div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[60%] rounded-t-sm relative group border-t-2 border-primary"></div>
-<div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[55%] rounded-t-sm relative group border-t-2 border-primary"></div>
-<div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[65%] rounded-t-sm relative group border-t-2 border-primary"></div>
-</div>
-<div class="flex justify-between mt-4 text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
-<span>Okt 24</span>
-<span>Nov 24</span>
-<span>Des 24</span>
-<span>Jan 25</span>
-<span>Feb 25</span>
-<span>Mar 25</span>
-<span>Apr 25</span>
-<span>Mei 25</span>
-<span>Jun 25</span>
-<span>Jul 25</span>
-<span>Agu 25</span>
-<span>Sep 25</span>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
-<h3 class="font-bold text-lg dark:text-white mb-6">Peringatan Kepatuhan</h3>
-<div class="space-y-4 flex-1">
-<div class="flex gap-4 p-3 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-lg">
-<div class="w-10 h-10 rounded bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
-<span class="material-icons text-red-600">warning</span>
-</div>
-<div>
-<p class="text-sm font-bold text-red-900 dark:text-red-400 leading-tight">Bukti Pajak Hilang</p>
-<p class="text-xs text-red-700 dark:text-red-300/70 mt-1">Bukti bayar PPN Q3 tidak ditemukan di Pusat Dokumen.</p>
-<button class="mt-2 text-xs font-bold text-red-700 dark:text-red-400 underline uppercase">Unggah Sekarang</button>
-</div>
-</div>
-<div class="flex gap-4 p-3 bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20 rounded-lg">
-<div class="w-10 h-10 rounded bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center shrink-0">
-<span class="material-icons text-amber-600">event_note</span>
-</div>
-<div>
-<p class="text-sm font-bold text-amber-900 dark:text-amber-400 leading-tight">Jatuh Tempo Iuran Tetap</p>
-<p class="text-xs text-amber-700 dark:text-amber-300/70 mt-1">Pembayaran area eksploitasi Blok Utara jatuh tempo 28 Okt.</p>
-<button class="mt-2 text-xs font-bold text-amber-700 dark:text-amber-400 underline uppercase">Siapkan Pembayaran</button>
-</div>
-</div>
-<div class="flex gap-4 p-3 border border-slate-100 dark:border-slate-800 rounded-lg">
-<div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
-<span class="material-icons text-slate-500">check_circle</span>
-</div>
-<div>
-<p class="text-sm font-bold dark:text-white leading-tight">Rekonsiliasi Royalti</p>
-<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Volume ekstraksi September cocok dengan portal pemerintah.</p>
-</div>
-</div>
-</div>
-<button class="w-full mt-6 py-2.5 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white min-h-screen">
+
+<div class="flex min-h-screen overflow-hidden">
+    
+    <aside id="sidebar" class="w-80 bg-white dark:bg-[#111418] border-r border-slate-200 dark:border-slate-800 flex flex-col sticky top-0 h-screen z-50">
+        <div class="p-6 border-b border-slate-100 dark:border-slate-800 sidebar-header flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="size-12 min-w-12 rounded-xl flex items-center justify-center bg-primary text-white">
+                    <span class="material-symbols-outlined text-3xl">mining</span>
+                </div>
+                <div class="flex flex-col logo-details whitespace-nowrap overflow-hidden">
+                    <h2 class="text-lg font-bold leading-tight dark:text-white">Mine For All</h2>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Portal Perusahaan</p>
+                </div>
+            </div>
+            <button onclick="toggleSidebar()" class="sidebar-text p-1 text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                <span class="material-symbols-outlined">first_page</span>
+            </button>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-2" id="sidebar-nav">
+            
+            <button id="btn-expand" onclick="toggleSidebar()" class="w-full hidden justify-center p-2 mb-4 text-slate-400 hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">last_page</span>
+            </button>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors menu-link relative group" href="../dashboard.html" data-title="Dashboard">
+                <span class="material-symbols-outlined min-w-[24px] text-slate-400">dashboard</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Dashboard</span>
+            </a>
+
+            <div class="menu-item">
+                <button onclick="toggleMenu(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group menu-link relative" data-title="Pra-Tambang">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary min-w-[24px]">landscape</span>
+                        <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Tahap Pra-Tambang</span>
+                    </div>
+                    <span class="material-symbols-outlined text-sm arrow-icon text-slate-400">expand_more</span>
+                </button>
+                <div class="submenu flex flex-col pl-12 space-y-1 mt-1 sidebar-text">
+                    <a href="../pra_tambang/eksplorasi.html" class="text-xs py-2 text-slate-500 hover:text-primary transition-colors">Eksplorasi</a>
+                    <a href="../pra_tambang/studi_kelayakan.html" class="text-xs py-2 text-slate-500 hover:text-primary transition-colors">Studi Kelayakan</a>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <button onclick="toggleMenu(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group menu-link relative" data-title="Operasional">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary min-w-[24px]">settings_applications</span>
+                        <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Operasional</span>
+                    </div>
+                    <span class="material-symbols-outlined text-sm arrow-icon text-slate-400">expand_more</span>
+                </button>
+                <div class="submenu flex flex-col pl-12 space-y-1 mt-1 sidebar-text">
+                    <a href="../operasional/k3.html" class="text-xs py-2 text-slate-500 hover:text-primary transition-colors">K3 (Keselamatan)</a>
+                    <a href="#" class="text-xs py-2 text-slate-500 hover:text-primary transition-colors">Produksi</a>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <button onclick="toggleMenu(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-primary text-white shadow-md shadow-primary/20 menu-link relative group" data-title="Kepatuhan">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined min-w-[24px]">gavel</span>
+                        <span class="text-sm font-semibold sidebar-text whitespace-nowrap">Kepatuhan</span>
+                    </div>
+                    <span class="material-symbols-outlined text-sm arrow-icon text-white">expand_more</span>
+                </button>
+                <div class="submenu flex flex-col pl-12 space-y-1 mt-1 sidebar-text">
+                    <a href="royalti.html" class="flex items-center gap-3 px-4 py-2 text-sm font-bold text-primary transition-colors">
+                        <span class="size-1.5 rounded-full bg-primary"></span>
+                        Royalti
+                    </a>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <button onclick="toggleMenu(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group menu-link relative" data-title="Pasca-Tambang">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-primary min-w-[24px]">eco</span>
+                        <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Pasca-Tambang</span>
+                    </div>
+                    <span class="material-symbols-outlined text-sm arrow-icon text-slate-400">expand_more</span>
+                </button>
+                <div class="submenu flex flex-col pl-12 space-y-1 mt-1 sidebar-text">
+                    <a href="../pasca_tambang/reklamasi.html" class="text-xs py-2 text-slate-500 hover:text-primary transition-colors">Reklamasi</a>
+                </div>
+            </div>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors menu-link relative group" href="../arsip/lisensi.html" data-title="Arsip Dokumen">
+                <span class="material-symbols-outlined text-slate-400 min-w-[24px]">folder_open</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Arsip Dokumen</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors menu-link relative group" href="#" data-title="Pengaturan">
+                <span class="material-symbols-outlined text-slate-400 min-w-[24px]">settings</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 sidebar-text whitespace-nowrap">Pengaturan</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 menu-link relative">
+                <div class="size-10 min-w-10 rounded-full border-2 border-white dark:border-slate-700 bg-slate-200 overflow-hidden">
+                    <img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZp9h0ha7JIVJIWVjgqRX38dSASLbtAC8wiRnSD3TQXTGm8cToOdC44lvy1GEfKYoKzmNO5RPB-pH61vCkZDN8DwpiP1gY10R10wtoJaiUcBpVCw8XSLnc1ULLsmST_MteYa4QDEouPYNSKiPnPrS94wZ-Wi85vxVv7WGAgX9R6y6rZI2ao_HNw8_ehzVypp62gqs3DchxuBB69L5WHiqjhid5HDTAznzTEbbr9XPk4nRh5HwfW6OqHqP0e3gWkrma02y5-rlqLsk"/>
+                </div>
+                <div class="flex-1 min-w-0 user-details overflow-hidden">
+                    <p class="text-xs font-bold truncate">Marcus Sterling</p>
+                    <p class="text-[10px] text-slate-500 font-medium truncate">Direktur Keuangan</p>
+                </div>
+                <span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-red-500 transition-colors user-details">logout</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto bg-[#f8fafc] dark:bg-background-dark">
+        <div class="w-full max-w-[1440px] mx-auto px-8 py-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+                <div>
+                    <nav class="flex text-xs font-medium text-slate-400 mb-2 uppercase tracking-widest">
+                        <span>Portal Perusahaan</span>
+                        <span class="mx-2">/</span>
+                        <span>Kepatuhan</span>
+                        <span class="mx-2">/</span>
+                        <span class="text-primary">Finansial & Royalti</span>
+                    </nav>
+                    <h1 class="text-3xl font-bold dark:text-white">Transparansi Finansial & Royalti</h1>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1">Pengawasan real-time kewajiban pertambangan dan remitansi pemerintah.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-1 shadow-sm">
+                        <button class="px-4 py-2 text-sm font-medium bg-primary text-white rounded shadow-sm">Tahun Fiskal Ini</button>
+                        <button class="px-4 py-2 text-sm font-medium text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded">2023</button>
+                        <button class="px-4 py-2 text-sm font-medium text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded">Semua Waktu</button>
+                    </div>
+                    <button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 transition-colors">
+                        <span class="material-icons text-sm">filter_list</span>
+                        <span>Filter</span>
+                    </button>
+                    <button class="flex items-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg shadow-md font-medium hover:bg-blue-600 transition-colors">
+                        <span class="material-icons text-sm">file_download</span>
+                        <span>Ekspor Laporan</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+                    <div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="material-icons text-6xl">payments</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-4">
+                        <span class="material-icons text-sm">account_balance_wallet</span>
+                        <span class="text-sm font-semibold uppercase tracking-wider">Pendapatan Penjualan</span>
+                    </div>
+                    <div class="text-3xl font-bold dark:text-white mb-1">$42,850,000</div>
+                    <div class="flex items-center text-xs font-medium text-green-500">
+                        <span class="material-icons text-xs">trending_up</span>
+                        <span>12.5% vs Kuartal Lalu</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group border-l-4 border-l-primary">
+                    <div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="material-icons text-6xl">calculate</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-4">
+                        <span class="material-icons text-sm">receipt_long</span>
+                        <span class="text-sm font-semibold uppercase tracking-wider">Estimasi Royalti</span>
+                    </div>
+                    <div class="text-3xl font-bold dark:text-white mb-1">$3,642,250</div>
+                    <div class="flex items-center text-xs font-medium text-slate-500">
+                        <span class="material-icons text-xs mr-1">check_circle</span>
+                        <span>Terverifikasi oleh Pemerintah</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+                    <div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="material-icons text-6xl">landscape</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-4">
+                        <span class="material-icons text-sm">foundation</span>
+                        <span class="text-sm font-semibold uppercase tracking-wider">Iuran Tetap (Land Rent)</span>
+                    </div>
+                    <div class="text-3xl font-bold dark:text-white mb-1">$890,000</div>
+                    <div class="flex items-center text-xs font-medium text-primary">
+                        <span class="material-icons text-xs mr-1">history</span>
+                        <span>Pembayaran Selanjutnya dalam 14 hari</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+                    <div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="material-icons text-6xl">gavel</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-4">
+                        <span class="material-icons text-sm">description</span>
+                        <span class="text-sm font-semibold uppercase tracking-wider">Pajak yang Dibayarkan</span>
+                    </div>
+                    <div class="text-3xl font-bold dark:text-white mb-1">$12,120,500</div>
+                    <div class="flex items-center text-xs font-medium text-green-500">
+                        <span class="material-icons text-xs">done_all</span>
+                        <span>Semua Pelaporan Lancar</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div class="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <h3 class="font-bold text-lg dark:text-white leading-none">Prakiraan Kewajiban Royalti</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Proyeksi kewajiban berdasarkan target produksi (12 Bulan Ke Depan)</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-primary"></span>
+                                <span class="text-xs font-medium text-slate-500">Prakiraan</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-slate-300"></span>
+                                <span class="text-xs font-medium text-slate-500">Target Produksi</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-[300px] w-full mt-4 flex items-end justify-between gap-1">
+                        <div class="flex-1 bg-slate-100 dark:bg-slate-800 h-[60%] rounded-t-sm relative group">
+                            <div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-slate-800 text-white text-[10px] px-2 py-1 rounded transition-opacity whitespace-nowrap">Okt: $280k</div>
+                        </div>
+                        <div class="flex-1 bg-slate-100 dark:bg-slate-800 h-[65%] rounded-t-sm relative group"></div>
+                        <div class="flex-1 bg-slate-100 dark:bg-slate-800 h-[75%] rounded-t-sm relative group"></div>
+                        <div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[80%] rounded-t-sm relative group border-t-2 border-primary">
+                            <div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-slate-800 text-white text-[10px] px-2 py-1 rounded transition-opacity whitespace-nowrap">Jan: $340k</div>
+                        </div>
+                        <div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[85%] rounded-t-sm relative group border-t-2 border-primary"></div>
+                        <div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[90%] rounded-t-sm relative group border-t-2 border-primary"></div>
+                        <div class="flex-1 bg-primary h-[95%] rounded-t-sm relative group">
+                            <div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-100 bg-primary text-white text-[10px] px-2 py-1 rounded whitespace-nowrap font-bold">Puncak: $410k</div>
+                        </div>
+                        <div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[85%] rounded-t-sm relative group border-t-2 border-primary"></div>
+                        <div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[70%] rounded-t-sm relative group border-t-2 border-primary"></div>
+                        <div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[60%] rounded-t-sm relative group border-t-2 border-primary"></div>
+                        <div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[55%] rounded-t-sm relative group border-t-2 border-primary"></div>
+                        <div class="flex-1 bg-primary/20 dark:bg-primary/10 h-[65%] rounded-t-sm relative group border-t-2 border-primary"></div>
+                    </div>
+                    <div class="flex justify-between mt-4 text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
+                        <span>Okt 24</span><span>Nov 24</span><span>Des 24</span><span>Jan 25</span><span>Feb 25</span><span>Mar 25</span>
+                        <span>Apr 25</span><span>Mei 25</span><span>Jun 25</span><span>Jul 25</span><span>Agu 25</span><span>Sep 25</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
+                    <h3 class="font-bold text-lg dark:text-white mb-6">Peringatan Kepatuhan</h3>
+                    <div class="space-y-4 flex-1">
+                        <div class="flex gap-4 p-3 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 rounded-lg">
+                            <div class="w-10 h-10 rounded bg-red-100 dark:bg-red-900/30 flex items-center justify-center shrink-0">
+                                <span class="material-icons text-red-600">warning</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-red-900 dark:text-red-400 leading-tight">Bukti Pajak Hilang</p>
+                                <p class="text-xs text-red-700 dark:text-red-300/70 mt-1">Bukti bayar PPN Q3 tidak ditemukan di Pusat Dokumen.</p>
+                                <button class="mt-2 text-xs font-bold text-red-700 dark:text-red-400 underline uppercase">Unggah Sekarang</button>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-3 bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20 rounded-lg">
+                            <div class="w-10 h-10 rounded bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center shrink-0">
+                                <span class="material-icons text-amber-600">event_note</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-amber-900 dark:text-amber-400 leading-tight">Jatuh Tempo Iuran Tetap</p>
+                                <p class="text-xs text-amber-700 dark:text-amber-300/70 mt-1">Pembayaran area eksploitasi Blok Utara jatuh tempo 28 Okt.</p>
+                                <button class="mt-2 text-xs font-bold text-amber-700 dark:text-amber-400 underline uppercase">Siapkan Pembayaran</button>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-3 border border-slate-100 dark:border-slate-800 rounded-lg">
+                            <div class="w-10 h-10 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
+                                <span class="material-icons text-slate-500">check_circle</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold dark:text-white leading-tight">Rekonsiliasi Royalti</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Volume ekstraksi September cocok dengan portal pemerintah.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full mt-6 py-2.5 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                         Lihat Kalender Kepatuhan
                     </button>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
-<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/20">
-<div>
-<h3 class="font-bold text-lg dark:text-white leading-none">Manajemen Dokumen</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Repositori pusat untuk bukti pembayaran dan tanda terima pajak</p>
-</div>
-<div class="flex items-center gap-4">
-<div class="relative">
-<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
-<input class="pl-10 pr-4 py-2 text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg w-64 focus:ring-primary focus:border-primary" placeholder="Cari dokumen..." type="text"/>
-</div>
-<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-blue-600 transition-shadow">
-<span class="material-icons text-sm">upload</span>
-<span>Unggah Baru</span>
-</button>
-</div>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left">
-<thead>
-<tr class="bg-slate-50 dark:bg-slate-800/50 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800">
-<th class="px-6 py-4">Nama Dokumen</th>
-<th class="px-6 py-4">Kategori</th>
-<th class="px-6 py-4">Tanggal Pengiriman</th>
-<th class="px-6 py-4">ID Referensi</th>
-<th class="px-6 py-4 text-center">Status Verifikasi</th>
-<th class="px-6 py-4 text-right">Aksi</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<span class="material-icons text-red-500">picture_as_pdf</span>
-<span class="text-sm font-semibold dark:text-white">Bukti_Bayar_Royalti_Agu24.pdf</span>
-</div>
-</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Royalti (PNBP)</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">05 Sep 2024</td>
-<td class="px-6 py-4 text-xs font-mono text-slate-500">#TRX-882109-RY</td>
-<td class="px-6 py-4 text-center">
-<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 uppercase tracking-tighter">Terverifikasi</span>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Lihat">
-<span class="material-icons text-slate-500 text-sm">visibility</span>
-</button>
-<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Unduh">
-<span class="material-icons text-slate-500 text-sm">download</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<span class="material-icons text-primary">description</span>
-<span class="text-sm font-semibold dark:text-white">Invoice_Iuran_Tetap_2024_Q4.pdf</span>
-</div>
-</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Iuran Tetap</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">28 Sep 2024</td>
-<td class="px-6 py-4 text-xs font-mono text-slate-500">#TRX-910244-LR</td>
-<td class="px-6 py-4 text-center">
-<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 uppercase tracking-tighter">Proses</span>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end gap-2">
-<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Lihat">
-<span class="material-icons text-slate-500 text-sm">visibility</span>
-</button>
-<button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Unduh">
-<span class="material-icons text-slate-500 text-sm">download</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3 text-slate-400 italic">
-<span class="material-icons">cloud_upload</span>
-<span class="text-sm">PPh_Badan_Q3.pdf</span>
-</div>
-</td>
-<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Pajak Penghasilan</td>
-<td class="px-6 py-4 text-sm text-slate-400 italic">--</td>
-<td class="px-6 py-4 text-xs font-mono text-slate-400 italic">Menunggu Unggah</td>
-<td class="px-6 py-4 text-center">
-<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-500 uppercase tracking-tighter">Hilang</span>
-</td>
-<td class="px-6 py-4 text-right">
-<div class="flex items-center justify-end">
-<button class="text-xs font-bold text-primary hover:underline uppercase">Unggah File</button>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 font-medium">
-<div>Menampilkan 3 dari 128 dokumen</div>
-<div class="flex items-center gap-1">
-<button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800"><span class="material-icons text-sm">chevron_left</span></button>
-<button class="px-2.5 py-1 rounded bg-primary text-white">1</button>
-<button class="px-2.5 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">2</button>
-<button class="px-2.5 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">3</button>
-<button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800"><span class="material-icons text-sm">chevron_right</span></button>
-</div>
-</div>
-</div>
-<div class="mt-12 opacity-40 grayscale hover:grayscale-0 transition-all duration-500 cursor-default">
-<div class="h-24 w-full bg-cover bg-center overflow-hidden border-y border-slate-200 dark:border-slate-800 flex items-center justify-center relative">
-<img alt="Peta tambang" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK-Xq0MemrqIA3JPHf-z9YjbBAnkyY6yF0IpgNFLdFI811nRPZqQJDk3ROUiqDOU2JiLbQUzCyZkc_xC7MxYIYvv2vmcQeRUKuzGvFV19XoXd_XbHUy3uFTChoU7LbNq0p2tl74g_5CyGvHPu4EIq9MURRaPGbd3tTD_8gpVTp2dAvHu61AM-ED3INZNUi00RY189dID4GaxZE6XsSbnZLN6FhcVwz-ztXqZaEcNNTzvm-Ax0vnCcCdtSvMNlA4t3vItjNGpvfWpo"/>
-<div class="absolute inset-0 bg-primary/10"></div>
-<div class="absolute flex flex-col items-center">
-<span class="material-icons text-primary drop-shadow-lg">location_on</span>
-<span class="text-[10px] font-bold text-slate-800 bg-white px-2 py-0.5 rounded-full uppercase tracking-tighter mt-1">Kompleks Pertambangan Sangihe</span>
-</div>
-</div>
-</div>
-</main>
-</div>
-<div class="fixed bottom-6 right-6 z-50">
-<button class="w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform group">
-<span class="material-icons group-hover:rotate-12 transition-transform">support_agent</span>
-</button>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/20">
+                    <div>
+                        <h3 class="font-bold text-lg dark:text-white leading-none">Manajemen Dokumen</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Repositori pusat untuk bukti pembayaran dan tanda terima pajak</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+                            <input class="pl-10 pr-4 py-2 text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg w-64 focus:ring-primary focus:border-primary" placeholder="Cari dokumen..." type="text"/>
+                        </div>
+                        <button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-blue-600 transition-shadow">
+                            <span class="material-icons text-sm">upload</span>
+                            <span>Unggah Baru</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-slate-50 dark:bg-slate-800/50 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800">
+                                <th class="px-6 py-4">Nama Dokumen</th>
+                                <th class="px-6 py-4">Kategori</th>
+                                <th class="px-6 py-4">Tanggal Pengiriman</th>
+                                <th class="px-6 py-4">ID Referensi</th>
+                                <th class="px-6 py-4 text-center">Status Verifikasi</th>
+                                <th class="px-6 py-4 text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-icons text-red-500">picture_as_pdf</span>
+                                        <span class="text-sm font-semibold dark:text-white">Bukti_Bayar_Royalti_Agu24.pdf</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Royalti (PNBP)</td>
+                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">05 Sep 2024</td>
+                                <td class="px-6 py-4 text-xs font-mono text-slate-500">#TRX-882109-RY</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 uppercase tracking-tighter">Terverifikasi</span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Lihat"><span class="material-icons text-slate-500 text-sm">visibility</span></button>
+                                        <button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Unduh"><span class="material-icons text-slate-500 text-sm">download</span></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-icons text-primary">description</span>
+                                        <span class="text-sm font-semibold dark:text-white">Invoice_Iuran_Tetap_2024_Q4.pdf</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Iuran Tetap</td>
+                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">28 Sep 2024</td>
+                                <td class="px-6 py-4 text-xs font-mono text-slate-500">#TRX-910244-LR</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 uppercase tracking-tighter">Proses</span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Lihat"><span class="material-icons text-slate-500 text-sm">visibility</span></button>
+                                        <button class="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Unduh"><span class="material-icons text-slate-500 text-sm">download</span></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3 text-slate-400 italic">
+                                        <span class="material-icons">cloud_upload</span>
+                                        <span class="text-sm">PPh_Badan_Q3.pdf</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Pajak Penghasilan</td>
+                                <td class="px-6 py-4 text-sm text-slate-400 italic">--</td>
+                                <td class="px-6 py-4 text-xs font-mono text-slate-400 italic">Menunggu Unggah</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-500 uppercase tracking-tighter">Hilang</span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end">
+                                        <button class="text-xs font-bold text-primary hover:underline uppercase">Unggah File</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 font-medium">
+                    <div>Menampilkan 3 dari 128 dokumen</div>
+                    <div class="flex items-center gap-1">
+                        <button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800"><span class="material-icons text-sm">chevron_left</span></button>
+                        <button class="px-2.5 py-1 rounded bg-primary text-white">1</button>
+                        <button class="px-2.5 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">2</button>
+                        <button class="px-2.5 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">3</button>
+                        <button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800"><span class="material-icons text-sm">chevron_right</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 opacity-40 grayscale hover:grayscale-0 transition-all duration-500 cursor-default">
+                <div class="h-24 w-full bg-cover bg-center overflow-hidden border-y border-slate-200 dark:border-slate-800 flex items-center justify-center relative">
+                    <img alt="Peta tambang" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK-Xq0MemrqIA3JPHf-z9YjbBAnkyY6yF0IpgNFLdFI811nRPZqQJDk3ROUiqDOU2JiLbQUzCyZkc_xC7MxYIYvv2vmcQeRUKuzGvFV19XoXd_XbHUy3uFTChoU7LbNq0p2tl74g_5CyGvHPu4EIq9MURRaPGbd3tTD_8gpVTp2dAvHu61AM-ED3INZNUi00RY189dID4GaxZE6XsSbnZLN6FhcVwz-ztXqZaEcNNTzvm-Ax0vnCcCdtSvMNlA4t3vItjNGpvfWpo"/>
+                    <div class="absolute inset-0 bg-primary/10"></div>
+                    <div class="absolute flex flex-col items-center">
+                        <span class="material-icons text-primary drop-shadow-lg">location_on</span>
+                        <span class="text-[10px] font-bold text-slate-800 bg-white px-2 py-0.5 rounded-full uppercase tracking-tighter mt-1">Kompleks Pertambangan Sangihe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </div>
 
-</body></html>
+<div class="fixed bottom-6 right-6 z-50">
+    <button class="w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform group">
+        <span class="material-icons group-hover:rotate-12 transition-transform">support_agent</span>
+    </button>
+</div>
+
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const expandBtn = document.getElementById('btn-expand');
+
+    function toggleSidebar() {
+        sidebar.classList.toggle('collapsed');
+        
+        if (sidebar.classList.contains('collapsed')) {
+            expandBtn.classList.remove('hidden');
+            expandBtn.classList.add('flex');
+        } else {
+            expandBtn.classList.add('hidden');
+            expandBtn.classList.remove('flex');
+        }
+
+        if (sidebar.classList.contains('collapsed')) {
+             document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('menu-active');
+            });
+        }
+    }
+
+    function toggleMenu(button) {
+        if(sidebar.classList.contains('collapsed')) {
+            toggleSidebar();
+        }
+        const menuItem = button.parentElement;
+        document.querySelectorAll('.menu-item').forEach(item => {
+            if (item !== menuItem) {
+                item.classList.remove('menu-active');
+            }
+        });
+        menuItem.classList.toggle('menu-active');
+    }
+</script>
+
+</body>
+</html>
