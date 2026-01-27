@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Portal Monitoring Pertambangan</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1e3a8a", // Deep Blue
+                        secondary: "#137fec", // Brighter Blue
+                        accent: "#ca8a04", // Gold
+                        dark: "#020617",
+                    },
+                    fontFamily: {
+                        display: ["Orbitron", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.6 },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        .glass-nav {
+            @apply bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(2, 6, 23, 0.9) 0%, rgba(30, 58, 138, 0.7) 50%, rgba(2, 6, 23, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1579547621113-e4bb2a19bdd6?q=80&w=2539&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .card-hover {
+            @apply transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl;
+        }
+        .portal-card {
+            @apply relative rounded-3xl p-8 shadow-xl border backdrop-blur-sm overflow-hidden;
+        }
+        .gradient-text {
+            @apply bg-gradient-to-r from-blue-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-dark overflow-x-hidden">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="size-12 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform duration-300 glow">
+                    <span class="material-symbols-outlined text-2xl">mining</span>
+                </div>
+                <div>
+                    <h1 class="font-display font-bold text-xl leading-tight dark:text-white">Portal Monitoring</h1>
+                    <p class="text-[10px] font-bold text-accent uppercase tracking-widest opacity-90">Pertambangan Indonesia</p>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-3">
+                <button onclick="document.documentElement.classList.toggle('dark')" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors hover:shadow-md">
+                    <span class="material-symbols-outlined text-lg dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined text-lg hidden dark:inline">light_mode</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="portal" class="min-h-screen py-24 px-6 relative z-20 bg-gradient-to-b from-slate-50 to-white dark:from-dark dark:to-slate-900">
+        <div class="max-w-7xl mx-auto pt-20">
+            <div class="text-center mb-16">
+                <h1 class="font-display text-4xl md:text-6xl font-bold mb-4">Pilih <span class="gradient-text">Portal</span></h1>
+                <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+                    Akses platform sesuai peran Anda dalam ekosistem pertambangan Indonesia
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Portal Masyarakat -->
+                <a href="user/dashboard.html" class="group portal-card bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-dark border-slate-200 dark:border-slate-800 card-hover">
+                    <div class="absolute -top-10 -right-10 size-40 bg-green-500/5 rounded-full group-hover:scale-125 transition-transform duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="size-16 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/20 flex items-center justify-center text-green-600 dark:text-green-400 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <span class="material-symbols-outlined text-3xl">groups</span>
+                        </div>
+                        <h2 class="font-display text-2xl font-bold mb-3 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Masyarakat Umum</h2>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                            Akses data terbuka, peta sebaran, dan laporan dampak lingkungan secara transparan.
+                        </p>
+                        <div class="flex items-center text-green-600 dark:text-green-400 font-semibold gap-2 group-hover:gap-4 transition-all">
+                            <span>Lihat Dashboard Publik</span>
+                            <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Portal Perusahaan -->
+                <a href="perusahaan/dashboard.html" class="group portal-card bg-gradient-to-br from-primary/10 to-blue-900/20 dark:from-primary/20 dark:to-blue-900/30 border-primary/20 dark:border-primary/30 card-hover text-slate-800 dark:text-white">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute -top-10 -left-10 size-40 bg-blue-500/5 rounded-full group-hover:scale-125 transition-transform duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="size-16 rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/40 dark:to-cyan-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <span class="material-symbols-outlined text-3xl">domain</span>
+                        </div>
+                        <h2 class="font-display text-2xl font-bold mb-3">Perusahaan</h2>
+                        <p class="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
+                            Login pemegang IUP untuk pelaporan K3, produksi, dan kepatuhan regulasi.
+                        </p>
+                        <div class="flex items-center text-blue-600 dark:text-blue-400 font-semibold gap-2 group-hover:gap-4 transition-all">
+                            <span>Login Mitra</span>
+                            <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">login</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Portal Pemerintah -->
+                <a href="pemerintah/dashboard.html" class="group portal-card bg-gradient-to-br from-white to-amber-50/50 dark:from-slate-900 dark:to-amber-900/10 border-slate-200 dark:border-slate-800 card-hover">
+                    <div class="absolute -bottom-10 -right-10 size-40 bg-amber-500/5 rounded-full group-hover:scale-125 transition-transform duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="size-16 rounded-2xl bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/30 dark:to-yellow-900/20 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <span class="material-symbols-outlined text-3xl">gavel</span>
+                        </div>
+                        <h2 class="font-display text-2xl font-bold mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Pemerintah</h2>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                            Dashboard pengawasan, verifikasi data, dan monitoring PNBP nasional.
+                        </p>
+                        <div class="flex items-center text-amber-600 dark:text-amber-400 font-semibold gap-2 group-hover:gap-4 transition-all">
+                            <span>Masuk Panel Admin</span>
+                            <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-slate-400 py-12 px-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-8">
+                <h3 class="font-display text-2xl font-bold text-white mb-2">Portal Monitoring Pertambangan</h3>
+                <p class="text-slate-400">Sistem Terpadu untuk Transparansi Sektor Pertambangan</p>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-800 text-center text-sm">
+                <p>&copy; 2024 Portal Monitoring Pertambangan Indonesia. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'py-3', 'shadow-lg');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-3', 'shadow-lg');
+                navbar.classList.add('py-4');
+            }
+        });
+    </script>
+</body>
+</html>
