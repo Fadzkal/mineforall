@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Portal Pemerintah - Analitik Produksi Nasional</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
         tailwind.config = {
@@ -13,14 +13,43 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#137fec",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101922",
+                        "primary": {
+                            "50": "#eff6ff",
+                            "100": "#dbeafe",
+                            "200": "#bfdbfe",
+                            "300": "#93c5fd",
+                            "400": "#60a5fa",
+                            "500": "#3b82f6",
+                            "600": "#2563eb",
+                            "700": "#1d4ed8",
+                            "800": "#1e40af",
+                            "900": "#1e3a8a"
+                        },
+                        "secondary": {
+                            "50": "#f8fafc",
+                            "100": "#f1f5f9",
+                            "200": "#e2e8f0",
+                            "300": "#cbd5e1",
+                            "400": "#94a3b8",
+                            "500": "#64748b",
+                            "600": "#475569",
+                            "700": "#334155",
+                            "800": "#1e293b",
+                            "900": "#0f172a"
+                        },
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "error": "#ef4444"
                     },
                     fontFamily: {
                         "display": ["Public Sans"]
                     },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    borderRadius: {"DEFAULT": "0.375rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    boxShadow: {
+                        'sidebar': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
+                        'card-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+                    },
                 },
             },
         }
@@ -28,192 +57,259 @@
     <style type="text/tailwindcss">
         body {
             font-family: 'Public Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        /* Sidebar Navigation Active States */
+        .nav-item-active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+        }
+        .submenu-active {
+            background-color: #f0f9ff;
+            color: #1d4ed8;
+            border-left: 3px solid #3b82f6;
+        }
+        .dark .submenu-active {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
         }
         .heat-map-container {
             background-image: radial-gradient(circle at 30% 50%, rgba(19, 127, 236, 0.2) 0%, transparent 40%),
                               radial-gradient(circle at 70% 40%, rgba(245, 158, 11, 0.2) 0%, transparent 50%),
                               radial-gradient(circle at 50% 60%, rgba(16, 185, 129, 0.15) 0%, transparent 45%);
         }
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #e2e8f0;
-            border-radius: 10px;
-        }
-        .dark ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-        }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white min-h-screen">
+<body class="bg-secondary-50 dark:bg-secondary-900 text-secondary-900 dark:text-secondary-100 min-h-screen">
 <div class="flex min-h-screen overflow-hidden">
-    
-    <!-- Sidebar -->
-    <aside class="w-80 bg-white dark:bg-[#111418] border-r border-slate-200 dark:border-slate-800 flex flex-col sticky top-0 h-screen z-50">
-        
+    <!-- Sidebar - Disesuaikan dengan sidebar pertama -->
+    <aside class="w-72 bg-white dark:bg-secondary-800 border-r border-secondary-200 dark:border-secondary-700 flex flex-col sticky top-0 h-screen z-50 shadow-sidebar">
         <!-- Logo Section -->
-        <div class="p-6 border-b border-slate-100 dark:border-slate-800">
+        <div class="p-5 border-b border-secondary-100 dark:border-secondary-700">
             <div class="flex items-center gap-3">
-                <div class="size-12 rounded-xl flex items-center justify-center overflow-hidden">
-                    <img alt="Mine For All Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi03V-L-iX8zLMDGMUuCTko54kMAxXTOZhKP8RHR9PfNh8x8fwPzmjaIFlaZ698ukVza3O2W2RI-4MC2Vbvs1vVYNYr11w3fwNK2x7tXQ8R2WWqrY3w0ocg3A04UgrU483B04RVzEATgLoEDdNsWFGCorne8Zrz6oDXM_LvoaNOhYCMkb6RkZ8fE0wbSVXxq-9XgiqqeS4sWZD6zwfzhSqRGgoxLFrpTGUwpLkNe7Z3BBo8yZhbXdtB4zl4hVEQWGGaQYN2zYyjfA"/>
+                <div class="size-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
+                    <span class="material-symbols-outlined text-white text-xl">public</span>
                 </div>
                 <div class="flex flex-col">
-                    <h2 class="text-lg font-bold leading-tight tracking-tight dark:text-white">Mine For All</h2>
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Portal Pemerintah</p>
+                    <h2 class="text-lg font-bold leading-tight tracking-tight dark:text-white">MineForAll</h2>
+                    <p class="text-xs font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider">Portal Pemerintah</p>
                 </div>
             </div>
         </div>
         
         <!-- Navigation Menu -->
-        <nav class="flex-1 overflow-y-auto p-4 space-y-1">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="../dashboard.html">
-                <span class="material-symbols-outlined text-slate-400">dashboard</span>
-                <span class="text-sm font-semibold">Dashboard Ringkasan</span>
-            </a>
-            
-            <!-- Verifikasi Data -->
-            <div class="space-y-1">
-                <div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
-                    <span class="material-symbols-outlined text-slate-400">verified_user</span>
-                    <span class="text-sm font-semibold">Verifikasi Data</span>
-                    <span class="material-symbols-outlined ml-auto text-sm">expand_more</span>
-                </div>
-                <div class="ml-10 py-2 space-y-1">
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="../verifikasi/antrean.html">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Antrean Verifikasi
+        <div class="flex-1 overflow-y-auto py-4 px-3">
+            <div class="mb-6 px-2">
+                <p class="text-xs font-semibold text-secondary-500 dark:text-secondary-400 uppercase tracking-wider mb-3">Menu Utama</p>
+                <nav class="space-y-1">
+                    <!-- Dashboard -->
+                    <a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-secondary-100 dark:hover:bg-secondary-700/50 transition-all duration-200 font-medium" href="../dashboard.html">
+                        <span class="material-symbols-outlined text-lg">dashboard</span>
+                        <span class="text-sm flex-1">Dashboard Ringkasan</span>
                     </a>
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Riwayat Verifikasi
+                    
+                    <!-- Verifikasi Data -->
+                    <div class="space-y-1">
+                        <div class="flex items-center justify-between px-3 py-3 rounded-xl hover:bg-secondary-100 dark:hover:bg-secondary-700/50 transition-all duration-200 cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="size-8 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                                    <span class="material-symbols-outlined">fact_check</span>
+                                </div>
+                                <span class="text-sm font-medium">Verifikasi Data</span>
+                            </div>
+                            <span class="material-symbols-outlined text-secondary-400 text-sm transition-transform">chevron_right</span>
+                        </div>
+                        <div class="ml-11 space-y-1 pl-2 border-l border-secondary-200 dark:border-secondary-700">
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="../verifikasi/antrean.html">
+                                Antrean Verifikasi
+                            </a>
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="#">
+                                Riwayat Verifikasi
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Manajemen Perusahaan -->
+                    <div class="space-y-1">
+                        <div class="flex items-center justify-between px-3 py-3 rounded-xl hover:bg-secondary-100 dark:hover:bg-secondary-700/50 transition-all duration-200 cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="size-8 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                                    <span class="material-symbols-outlined">business</span>
+                                </div>
+                                <span class="text-sm font-medium">Manajemen Perusahaan</span>
+                            </div>
+                            <span class="material-symbols-outlined text-secondary-400 text-sm transition-transform">chevron_right</span>
+                        </div>
+                        <div class="ml-11 space-y-1 pl-2 border-l border-secondary-200 dark:border-secondary-700">
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="../manajemen/database.html">
+                                Database Badan Usaha
+                            </a>
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="#">
+                                Daftar Hitam
+                            </a>
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="#">
+                                Verifikasi Izin
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Analitik Nasional (Active) -->
+                    <div class="space-y-1">
+                        <div class="nav-item-active flex items-center justify-between px-3 py-3 rounded-xl font-medium transition-all duration-200 cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="size-8 rounded-lg bg-white/20 flex items-center justify-center text-white">
+                                    <span class="material-symbols-outlined">analytics</span>
+                                </div>
+                                <span class="text-sm font-medium">Analitik Nasional</span>
+                            </div>
+                            <span class="material-symbols-outlined text-white/80 text-sm transition-transform">expand_more</span>
+                        </div>
+                        <div class="ml-11 space-y-1 pl-2 border-l border-secondary-200 dark:border-secondary-700">
+                            <a class="submenu-active block px-3 py-2 rounded-lg text-sm transition-colors" href="produksi.html">
+                                Produksi
+                            </a>
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="#">
+                                Royalti & PNBP
+                            </a>
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="k3.html">
+                                Keselamatan/K3
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Pengawasan Lingkungan -->
+                    <div class="space-y-1">
+                        <div class="flex items-center justify-between px-3 py-3 rounded-xl hover:bg-secondary-100 dark:hover:bg-secondary-700/50 transition-all duration-200 cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="size-8 rounded-lg bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 dark:text-green-400">
+                                    <span class="material-symbols-outlined">nature_people</span>
+                                </div>
+                                <span class="text-sm font-medium">Pengawasan Lingkungan</span>
+                            </div>
+                            <span class="material-symbols-outlined text-secondary-400 text-sm transition-transform">chevron_right</span>
+                        </div>
+                        <div class="ml-11 space-y-1 pl-2 border-l border-secondary-200 dark:border-secondary-700">
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="../pengawasan/reklamasi.html">
+                                Reklamasi
+                            </a>
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="#">
+                                Kualitas Air
+                            </a>
+                            <a class="block px-3 py-2 rounded-lg text-sm text-secondary-600 dark:text-secondary-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700/30 transition-colors" href="#">
+                                Kualitas Udara
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Single Menu Items -->
+                    <a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-secondary-100 dark:hover:bg-secondary-700/50 transition-all duration-200" href="../audit.html">
+                        <div class="size-8 rounded-lg bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                            <span class="material-symbols-outlined">verified_user</span>
+                        </div>
+                        <span class="text-sm font-medium">Audit & Kepatuhan</span>
                     </a>
-                </div>
+                    
+                    <a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-secondary-100 dark:hover:bg-secondary-700/50 transition-all duration-200" href="#">
+                        <div class="size-8 rounded-lg bg-secondary-100 dark:bg-secondary-700 flex items-center justify-center text-secondary-600 dark:text-secondary-400">
+                            <span class="material-symbols-outlined">settings</span>
+                        </div>
+                        <span class="text-sm font-medium">Pengaturan Sistem</span>
+                    </a>
+                </nav>
             </div>
             
-            <!-- Manajemen Perusahaan -->
-            <div class="space-y-1">
-                <div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
-                    <span class="material-symbols-outlined text-slate-400">domain</span>
-                    <span class="text-sm font-semibold">Manajemen Perusahaan</span>
-                    <span class="material-symbols-outlined ml-auto text-sm">expand_more</span>
-                </div>
-                <div class="ml-10 py-2 space-y-1">
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="../manajemen/database.html">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Database Badan Usaha
-                    </a>
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Daftar Hitam/Blacklist
-                    </a>
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Verifikasi Izin
-                    </a>
+            <!-- Quick Stats -->
+            <div class="px-2 mb-6">
+                <p class="text-xs font-semibold text-secondary-500 dark:text-secondary-400 uppercase tracking-wider mb-3">Statistik Cepat</p>
+                <div class="space-y-2">
+                    <div class="bg-secondary-50 dark:bg-secondary-700/30 p-3 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-secondary-600 dark:text-secondary-400">Produksi Nasional</span>
+                            <span class="text-sm font-bold text-primary-600">654.2M Ton</span>
+                        </div>
+                    </div>
+                    <div class="bg-secondary-50 dark:bg-secondary-700/30 p-3 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-secondary-600 dark:text-secondary-400">Perusahaan Melapor</span>
+                            <span class="text-sm font-bold text-success">2,482</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Analitik Nasional (Active) -->
-            <div class="space-y-1">
-                <button class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary transition-colors">
-                    <span class="material-symbols-outlined">analytics</span>
-                    <span class="text-sm font-semibold flex-1 text-left">Analitik Nasional</span>
-                    <span class="material-symbols-outlined text-sm">expand_more</span>
-                </button>
-                <div class="ml-10 py-2 space-y-1">
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-bold text-primary" href="produksi.html">
-                        <span class="size-1.5 rounded-full bg-primary"></span>
-                        Produksi
-                    </a>
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Royalti &amp; PNBP
-                    </a>
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="k3.html">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Keselamatan (K3)
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Pengawasan Lingkungan -->
-            <div class="space-y-1">
-                <div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
-                    <span class="material-symbols-outlined text-slate-400">eco</span>
-                    <span class="text-sm font-semibold">Pengawasan Lingkungan</span>
-                    <span class="material-symbols-outlined ml-auto text-sm">expand_more</span>
-                </div>
-                <div class="ml-10 py-2 space-y-1">
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="../pengawasan/reklamasi.html">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Reklamasi
-                    </a>
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Kualitas Air
-                    </a>
-                    <a class="flex items-center gap-3 px-4 py-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">
-                        <span class="size-1.5 rounded-full bg-slate-300"></span>
-                        Kualitas Udara
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Audit & Kepatuhan -->
-            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="../audit.html">
-                <span class="material-symbols-outlined text-slate-400">gavel</span>
-                <span class="text-sm font-semibold">Audit &amp; Kepatuhan</span>
-            </a>
-            
-            <!-- Pengaturan Sistem -->
-            <a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
-                <span class="material-symbols-outlined text-slate-400">settings</span>
-                <span class="text-sm font-semibold">Pengaturan Sistem</span>
-            </a>
-        </nav>
+        </div>
         
         <!-- User Profile -->
-        <div class="p-4 border-t border-slate-100 dark:border-slate-800">
-            <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
-                <div class="size-10 rounded-full border-2 border-white dark:border-slate-700 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCE6bxRXobVZNS4k9YvFvY5VxDIc-ult-DBQtSyO-bUUDfe4pCy-IUw3QMlJ_uiYX1hvfLV-tAe1m7sGC9ISgwfA7qGyDyT0USE6qw2LDIkZ9ftOMOtHxEkgWnrCbi3Ap9l4FxCIlMJIcaCUMXxksNRoX324OEiP1kcAjwmJYh673aDNjy7TnxD1tr4uuk0HXPBsyCTpGjFgl29j4K-RH9kdRbwB4V508jcpwm3ude2fN5_J9nZyQUou3mDTtCSxxGUyzmbVylQSrg");'></div>
-                <div class="flex-1 min-w-0">
-                    <p class="text-xs font-bold truncate">Budi Santoso</p>
-                    <p class="text-[10px] text-slate-500 font-medium">Direktorat Pembinaan</p>
+        <div class="p-4 border-t border-secondary-100 dark:border-secondary-700 mt-auto">
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-secondary-50 dark:bg-secondary-700/50 hover:bg-secondary-100 dark:hover:bg-secondary-700 transition-colors cursor-pointer">
+                <div class="relative">
+                    <div class="size-10 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-bold">
+                        BS
+                    </div>
+                    <div class="absolute bottom-0 right-0 size-3 bg-success rounded-full border-2 border-white dark:border-secondary-800"></div>
                 </div>
-                <span class="material-symbols-outlined text-slate-400 cursor-pointer">logout</span>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-semibold truncate">Budi Santoso</p>
+                    <p class="text-xs text-secondary-500 dark:text-secondary-400 font-medium">Direktorat Pembinaan</p>
+                </div>
+                <button class="p-2 hover:bg-secondary-200 dark:hover:bg-secondary-600 rounded-lg transition-colors">
+                    <span class="material-symbols-outlined text-secondary-500 dark:text-secondary-400">logout</span>
+                </button>
             </div>
         </div>
     </aside>
 
-    <!-- Main Content -->
-    <main class="flex-1 flex flex-col h-screen overflow-y-auto bg-[#f8fafc] dark:bg-background-dark">
+    <!-- Main Content - Tetap sama seperti kode kedua -->
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto bg-[#f8fafc] dark:bg-secondary-900">
         
         <!-- Header -->
-        <header class="bg-white dark:bg-[#111418] border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex items-center justify-between sticky top-0 z-40">
+        <header class="bg-white dark:bg-secondary-800 border-b border-secondary-200 dark:border-secondary-800 px-8 py-4 flex items-center justify-between sticky top-0 z-40">
             <div>
                 <h1 class="text-xl font-bold">Analitik Produksi Nasional</h1>
-                <div class="flex items-center gap-2 text-xs text-slate-500 mt-1">
+                <div class="flex items-center gap-2 text-xs text-secondary-500 dark:text-secondary-400 mt-1">
                     <span>Analitik Nasional</span>
                     <span class="material-symbols-outlined text-xs">chevron_right</span>
-                    <span class="font-bold text-primary">Produksi</span>
+                    <span class="font-bold text-primary-600">Produksi</span>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <div class="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-green-700 rounded-lg border border-green-100">
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-lg border border-green-100 dark:border-green-900">
                     <span class="relative flex h-2 w-2">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
                     <span class="text-xs font-bold">Data Real-time: Teragregasi Otomatis</span>
                 </div>
-                <button class="flex items-center gap-2 px-4 h-10 rounded-xl border border-slate-200 bg-white text-sm font-bold shadow-sm hover:bg-slate-50 transition-all">
+                <button class="flex items-center gap-2 px-4 h-10 rounded-xl border border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-800 text-sm font-bold shadow-sm hover:bg-secondary-50 dark:hover:bg-secondary-700 transition-all">
                     <span class="material-symbols-outlined text-[20px]">download</span>
                     <span>Unduh Laporan</span>
                 </button>
@@ -226,16 +322,16 @@
             <!-- Filter Controls -->
             <div class="flex flex-wrap items-center justify-between gap-4">
                 <div class="flex gap-2">
-                    <button class="flex items-center gap-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-2 text-sm font-semibold shadow-sm">
+                    <button class="flex items-center gap-2 rounded-xl bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700 px-4 py-2 text-sm font-semibold shadow-sm">
                         <span>Tahun: 2023</span>
                         <span class="material-symbols-outlined text-[18px]">expand_more</span>
                     </button>
-                    <button class="flex items-center gap-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-2 text-sm font-semibold shadow-sm">
+                    <button class="flex items-center gap-2 rounded-xl bg-white dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700 px-4 py-2 text-sm font-semibold shadow-sm">
                         <span>Semua Komoditas</span>
                         <span class="material-symbols-outlined text-[18px]">expand_more</span>
                     </button>
                 </div>
-                <div class="flex items-center gap-3 text-sm text-slate-500">
+                <div class="flex items-center gap-3 text-sm text-secondary-500 dark:text-secondary-400">
                     <span class="flex items-center gap-1"><span class="size-2 rounded-full bg-blue-500"></span> Batubara</span>
                     <span class="flex items-center gap-1"><span class="size-2 rounded-full bg-amber-500"></span> Nikel</span>
                     <span class="flex items-center gap-1"><span class="size-2 rounded-full bg-yellow-500"></span> Emas</span>
@@ -243,31 +339,31 @@
             </div>
             
             <!-- Heat Map Card -->
-            <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+            <div class="bg-white dark:bg-secondary-800 rounded-2xl border border-secondary-200 dark:border-secondary-800 overflow-hidden shadow-card">
+                <div class="p-6 border-b border-secondary-100 dark:border-secondary-700 flex justify-between items-center">
                     <div>
                         <h2 class="font-bold">Peta Panas Produksi Mineral Seluruh Indonesia</h2>
-                        <p class="text-xs text-slate-500">Intensitas produksi berdasarkan volume per wilayah</p>
+                        <p class="text-xs text-secondary-500 dark:text-secondary-400">Intensitas produksi berdasarkan volume per wilayah</p>
                     </div>
                     <div class="flex gap-2">
-                        <button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800"><span class="material-symbols-outlined text-sm">zoom_in</span></button>
-                        <button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800"><span class="material-symbols-outlined text-sm">layers</span></button>
+                        <button class="p-2 rounded-lg bg-secondary-100 dark:bg-secondary-700"><span class="material-symbols-outlined text-sm">zoom_in</span></button>
+                        <button class="p-2 rounded-lg bg-secondary-100 dark:bg-secondary-700"><span class="material-symbols-outlined text-sm">layers</span></button>
                     </div>
                 </div>
-                <div class="aspect-[21/9] w-full heat-map-container relative flex items-center justify-center bg-slate-50 dark:bg-slate-950">
-                    <div class="w-4/5 h-4/5 border border-slate-200 border-dashed rounded-3xl flex items-center justify-center relative">
-                        <span class="text-slate-400 font-medium opacity-50">Visualisasi Peta Produksi Nasional</span>
+                <div class="aspect-[21/9] w-full heat-map-container relative flex items-center justify-center bg-secondary-50 dark:bg-secondary-900">
+                    <div class="w-4/5 h-4/5 border border-secondary-200 dark:border-secondary-700 border-dashed rounded-3xl flex items-center justify-center relative">
+                        <span class="text-secondary-400 dark:text-secondary-500 font-medium opacity-50">Visualisasi Peta Produksi Nasional</span>
                         <div class="absolute top-1/4 left-1/4 size-16 bg-blue-500/30 blur-xl rounded-full"></div>
                         <div class="absolute top-1/2 left-1/3 size-24 bg-blue-600/40 blur-2xl rounded-full"></div>
                         <div class="absolute top-1/3 right-1/4 size-20 bg-amber-500/30 blur-xl rounded-full"></div>
                         <div class="absolute bottom-1/4 right-1/3 size-12 bg-green-500/30 blur-lg rounded-full"></div>
                     </div>
-                    <div class="absolute bottom-6 right-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur p-3 rounded-lg border border-slate-200 dark:border-slate-800 shadow-lg text-[10px]">
-                        <p class="font-bold mb-2 uppercase tracking-wider">Kepadatan Produksi</p>
+                    <div class="absolute bottom-6 right-6 bg-white/90 dark:bg-secondary-900/90 backdrop-blur p-3 rounded-lg border border-secondary-200 dark:border-secondary-700 shadow-lg text-[10px]">
+                        <p class="font-bold mb-2 uppercase tracking-wider text-secondary-700 dark:text-secondary-300">Kepadatan Produksi</p>
                         <div class="flex items-center gap-2">
-                            <span>Rendah</span>
+                            <span class="text-secondary-600 dark:text-secondary-400">Rendah</span>
                             <div class="h-2 w-24 rounded-full bg-gradient-to-r from-blue-200 via-blue-500 to-blue-900"></div>
-                            <span>Tinggi</span>
+                            <span class="text-secondary-600 dark:text-secondary-400">Tinggi</span>
                         </div>
                     </div>
                 </div>
@@ -276,121 +372,121 @@
             <!-- Charts and Rankings -->
             <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
                 <!-- Left Column - Production Trend Chart -->
-                <div class="xl:col-span-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+                <div class="xl:col-span-2 bg-white dark:bg-secondary-800 rounded-2xl border border-secondary-200 dark:border-secondary-800 p-6 shadow-card">
                     <div class="flex items-center justify-between mb-8">
                         <div>
                             <h2 class="font-bold">Tren Produksi Nasional Tahunan</h2>
-                            <p class="text-xs text-slate-500">Perbandingan target vs realisasi (Juta Ton/Oz)</p>
+                            <p class="text-xs text-secondary-500 dark:text-secondary-400">Perbandingan target vs realisasi (Juta Ton/Oz)</p>
                         </div>
-                        <select class="bg-slate-50 dark:bg-slate-800 border-none rounded-lg text-xs font-bold focus:ring-primary">
+                        <select class="bg-secondary-50 dark:bg-secondary-700 border-none rounded-lg text-xs font-bold focus:ring-primary-500">
                             <option>5 Tahun Terakhir</option>
                             <option>10 Tahun Terakhir</option>
                         </select>
                     </div>
                     <div class="h-64 flex items-end gap-2 relative">
                         <div class="absolute inset-0 flex flex-col justify-between py-2">
-                            <div class="w-full border-t border-slate-100 dark:border-slate-800"></div>
-                            <div class="w-full border-t border-slate-100 dark:border-slate-800"></div>
-                            <div class="w-full border-t border-slate-100 dark:border-slate-800"></div>
-                            <div class="w-full border-t border-slate-100 dark:border-slate-800"></div>
+                            <div class="w-full border-t border-secondary-100 dark:border-secondary-700"></div>
+                            <div class="w-full border-t border-secondary-100 dark:border-secondary-700"></div>
+                            <div class="w-full border-t border-secondary-100 dark:border-secondary-700"></div>
+                            <div class="w-full border-t border-secondary-100 dark:border-secondary-700"></div>
                         </div>
                         <div class="flex-1 flex flex-col justify-end gap-1 group">
-                            <div class="bg-primary/20 rounded-t-lg w-full h-[60%] relative group-hover:bg-primary/40 transition-all">
-                                <div class="absolute -top-1 left-0 right-0 h-1 bg-primary rounded-full"></div>
+                            <div class="bg-primary-600/20 rounded-t-lg w-full h-[60%] relative group-hover:bg-primary-600/40 transition-all">
+                                <div class="absolute -top-1 left-0 right-0 h-1 bg-primary-600 rounded-full"></div>
                             </div>
-                            <p class="text-[10px] text-center font-bold text-slate-400">2019</p>
+                            <p class="text-[10px] text-center font-bold text-secondary-400">2019</p>
                         </div>
                         <div class="flex-1 flex flex-col justify-end gap-1 group">
-                            <div class="bg-primary/20 rounded-t-lg w-full h-[75%] relative group-hover:bg-primary/40 transition-all">
-                                <div class="absolute -top-1 left-0 right-0 h-1 bg-primary rounded-full"></div>
+                            <div class="bg-primary-600/20 rounded-t-lg w-full h-[75%] relative group-hover:bg-primary-600/40 transition-all">
+                                <div class="absolute -top-1 left-0 right-0 h-1 bg-primary-600 rounded-full"></div>
                             </div>
-                            <p class="text-[10px] text-center font-bold text-slate-400">2020</p>
+                            <p class="text-[10px] text-center font-bold text-secondary-400">2020</p>
                         </div>
                         <div class="flex-1 flex flex-col justify-end gap-1 group">
-                            <div class="bg-primary/20 rounded-t-lg w-full h-[65%] relative group-hover:bg-primary/40 transition-all">
-                                <div class="absolute -top-1 left-0 right-0 h-1 bg-primary rounded-full"></div>
+                            <div class="bg-primary-600/20 rounded-t-lg w-full h-[65%] relative group-hover:bg-primary-600/40 transition-all">
+                                <div class="absolute -top-1 left-0 right-0 h-1 bg-primary-600 rounded-full"></div>
                             </div>
-                            <p class="text-[10px] text-center font-bold text-slate-400">2021</p>
+                            <p class="text-[10px] text-center font-bold text-secondary-400">2021</p>
                         </div>
                         <div class="flex-1 flex flex-col justify-end gap-1 group">
-                            <div class="bg-primary/20 rounded-t-lg w-full h-[85%] relative group-hover:bg-primary/40 transition-all">
-                                <div class="absolute -top-1 left-0 right-0 h-1 bg-primary rounded-full"></div>
+                            <div class="bg-primary-600/20 rounded-t-lg w-full h-[85%] relative group-hover:bg-primary-600/40 transition-all">
+                                <div class="absolute -top-1 left-0 right-0 h-1 bg-primary-600 rounded-full"></div>
                             </div>
-                            <p class="text-[10px] text-center font-bold text-slate-400">2022</p>
+                            <p class="text-[10px] text-center font-bold text-secondary-400">2022</p>
                         </div>
                         <div class="flex-1 flex flex-col justify-end gap-1 group">
-                            <div class="bg-primary rounded-t-lg w-full h-[95%] relative">
-                                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Real: 654.2 MT</div>
+                            <div class="bg-primary-600 rounded-t-lg w-full h-[95%] relative">
+                                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-secondary-900 text-white text-[10px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Real: 654.2 MT</div>
                             </div>
-                            <p class="text-[10px] text-center font-bold text-primary">2023</p>
+                            <p class="text-[10px] text-center font-bold text-primary-600">2023</p>
                         </div>
                     </div>
                     <div class="mt-6 flex justify-center gap-6">
                         <div class="flex items-center gap-2">
-                            <div class="size-3 rounded bg-primary"></div>
-                            <span class="text-xs font-medium">Realisasi Produksi</span>
+                            <div class="size-3 rounded bg-primary-600"></div>
+                            <span class="text-xs font-medium text-secondary-700 dark:text-secondary-300">Realisasi Produksi</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <div class="size-3 rounded bg-primary/20 border border-primary/40"></div>
-                            <span class="text-xs font-medium">Target RKAB</span>
+                            <div class="size-3 rounded bg-primary-600/20 border border-primary-600/40"></div>
+                            <span class="text-xs font-medium text-secondary-700 dark:text-secondary-300">Target RKAB</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Right Column - Royalty Rankings -->
-                <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm space-y-6">
+                <div class="bg-white dark:bg-secondary-800 rounded-2xl border border-secondary-200 dark:border-secondary-800 p-6 shadow-card space-y-6">
                     <div>
                         <h2 class="font-bold">Peringkat Royalti per Wilayah</h2>
-                        <p class="text-xs text-slate-500">Kontribusi terbesar tahun berjalan</p>
+                        <p class="text-xs text-secondary-500 dark:text-secondary-400">Kontribusi terbesar tahun berjalan</p>
                     </div>
                     <div class="space-y-4">
                         <div class="flex items-center gap-4">
-                            <div class="size-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm">1</div>
+                            <div class="size-10 rounded-xl bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">1</div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="text-sm font-bold">Kalimantan Timur</span>
-                                    <span class="text-xs font-bold">Rp 42.1T</span>
+                                    <span class="text-sm font-bold text-secondary-700 dark:text-secondary-300">Kalimantan Timur</span>
+                                    <span class="text-xs font-bold text-secondary-700 dark:text-secondary-300">Rp 42.1T</span>
                                 </div>
-                                <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-1.5 w-full bg-secondary-100 dark:bg-secondary-700 rounded-full overflow-hidden">
                                     <div class="h-full bg-amber-500 rounded-full" style="width: 85%"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
-                            <div class="size-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center font-bold text-sm">2</div>
+                            <div class="size-10 rounded-xl bg-secondary-50 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-400 flex items-center justify-center font-bold text-sm">2</div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="text-sm font-bold">Sulawesi Selatan</span>
-                                    <span class="text-xs font-bold">Rp 12.4T</span>
+                                    <span class="text-sm font-bold text-secondary-700 dark:text-secondary-300">Sulawesi Selatan</span>
+                                    <span class="text-xs font-bold text-secondary-700 dark:text-secondary-300">Rp 12.4T</span>
                                 </div>
-                                <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                                    <div class="h-full bg-primary rounded-full" style="width: 45%"></div>
+                                <div class="h-1.5 w-full bg-secondary-100 dark:bg-secondary-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary-600 rounded-full" style="width: 45%"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
-                            <div class="size-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center font-bold text-sm">3</div>
+                            <div class="size-10 rounded-xl bg-secondary-50 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-400 flex items-center justify-center font-bold text-sm">3</div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-center mb-1">
-                                    <span class="text-sm font-bold">Papua Tengah</span>
-                                    <span class="text-xs font-bold">Rp 10.8T</span>
+                                    <span class="text-sm font-bold text-secondary-700 dark:text-secondary-300">Papua Tengah</span>
+                                    <span class="text-xs font-bold text-secondary-700 dark:text-secondary-300">Rp 10.8T</span>
                                 </div>
-                                <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                                    <div class="h-full bg-primary rounded-full" style="width: 38%"></div>
+                                <div class="h-1.5 w-full bg-secondary-100 dark:bg-secondary-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary-600 rounded-full" style="width: 38%"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button class="w-full py-3 text-xs font-bold text-primary hover:bg-primary/5 rounded-xl transition-colors border border-primary/10">Lihat Semua Wilayah</button>
+                    <button class="w-full py-3 text-xs font-bold text-primary-600 hover:bg-primary-600/5 rounded-xl transition-colors border border-primary-600/10">Lihat Semua Wilayah</button>
                 </div>
             </div>
             
             <!-- Data Aggregation Info -->
-            <div class="bg-blue-600 rounded-2xl p-8 text-white relative overflow-hidden shadow-lg shadow-blue-500/20">
+            <div class="bg-primary-600 rounded-2xl p-8 text-white relative overflow-hidden shadow-lg shadow-primary-600/20">
                 <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="space-y-2 text-center md:text-left">
                         <h3 class="text-xl font-bold">Agregasi Data Otomatis</h3>
-                        <p class="text-blue-100 text-sm max-w-2xl">Data yang ditampilkan bersumber langsung dari input harian dan bulanan perusahaan pertambangan melalui Portal Perusahaan. Sistem melakukan validasi silang dengan data survei lapangan dan ekspor secara otomatis.</p>
+                        <p class="text-primary-100 text-sm max-w-2xl">Data yang ditampilkan bersumber langsung dari input harian dan bulanan perusahaan pertambangan melalui Portal Perusahaan. Sistem melakukan validasi silang dengan data survei lapangan dan ekspor secara otomatis.</p>
                     </div>
                     <div class="flex flex-col items-center bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 min-w-[200px]">
                         <span class="text-3xl font-black">2,482</span>
@@ -398,7 +494,7 @@
                     </div>
                 </div>
                 <div class="absolute -right-20 -bottom-20 size-64 bg-white/10 rounded-full blur-3xl"></div>
-                <div class="absolute -left-10 -top-10 size-40 bg-blue-400/20 rounded-full blur-2xl"></div>
+                <div class="absolute -left-10 -top-10 size-40 bg-primary-400/20 rounded-full blur-2xl"></div>
             </div>
         </div>
     </main>
